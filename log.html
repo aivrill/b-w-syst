@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AB-EN Transport</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f8fa;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 18px 20px 12px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    .logo-circle {
+      width: 38px;
+      height: 38px;
+      background: #4b4ee5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-size: 22px;
+      color: #fff;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #888;
+    }
+    .user-badge {
+      display: flex;
+      align-items: center;
+      background: #f4f5fa;
+      border-radius: 20px;
+      padding: 6px 12px;
+    }
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .user-name {
+      font-weight: 500;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .welcome-card {
+      background: linear-gradient(135deg, #4147ff, #6c63ff 90%);
+      color: #fff;
+      padding: 24px;
+      margin: 20px;
+      border-radius: 22px;
+      box-shadow: 0 3px 10px #0001;
+    }
+    .welcome-title {
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .welcome-desc {
+      font-size: 15px;
+      opacity: 0.95;
+      margin-bottom: 16px;
+    }
+    .welcome-row {
+      font-size: 14px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .welcome-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .shortcuts {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 20px 0 20px;
+    }
+    .shortcut-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 0 12px 0;
+      width: 22%;
+      text-align: center;
+      box-shadow: 0 3px 10px #0001;
+      cursor: pointer;
+      transition: box-shadow 0.12s;
+    }
+    .shortcut-card:hover {
+      box-shadow: 0 6px 20px #0002;
+    }
+    .shortcut-icon {
+      font-size: 26px;
+    }
+    .shortcut-label {
+      font-size: 15px;
+      color: #444;
+      margin-top: 6px;
+    }
+
+    .vehicle-section {
+      margin: 28px 20px 0 20px;
+    }
+    .vehicle-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      justify-content: space-between;
+    }
+    .vehicle-title {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .all-available {
+      display: flex;
+      align-items: center;
+      background: #e9fbe8;
+      color: #23c16b;
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      font-size: 14px;
+    }
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #23c16b;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+
+    .vehicle-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 3px 10px #0001;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+    .vehicle-img-wrap {
+      position: relative;
+    }
+    .vehicle-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .vehicle-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #35394b;
+      color: #fff;
+      border-radius: 8px;
+      padding: 2px 8px;
+      font-size: 13px;
+      opacity: 0.95;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .vehicle-price {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #4186ff;
+      color: #fff;
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .vehicle-info {
+      padding: 14px 16px 14px 16px;
+    }
+    .vehicle-name {
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+    .vehicle-type {
+      font-size: 15px;
+      color: #777;
+    }
+
+    @media (max-width: 700px) {
+      .shortcuts { gap: 8px; }
+      .shortcut-card { width: 23%; font-size: 14px; padding: 13px 0 8px 0;}
+      .welcome-card, .vehicle-section {margin: 10px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-circle">🚗</div>
+      <div>
+        <div class="brand">AB-EN Transport</div>
+        <div class="subtitle">Book your ride</div>
+      </div>
+    </div>
+    <div class="user-badge">
+      <img class="user-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+      <span class="user-name">Hi, Juan</span>
+    </div>
+  </div>
+
+  <!-- Welcome Card -->
+  <div class="welcome-card">
+    <div class="welcome-title">Where to today?</div>
+    <div class="welcome-desc">
+      Choose your preferred vehicle and get instant fare estimates
+    </div>
+    <div class="welcome-row">
+      <span>🛡️ Safe &amp; Reliable</span>
+      <span>⏰ 24/7 Service</span>
+    </div>
+  </div>
+
+  <!-- Shortcuts -->
+  <div class="shortcuts">
+    <div class="shortcut-card">
+      <div class="shortcut-icon">📍</div>
+      <div class="shortcut-label">Saved Places</div>
+    </div>
+    <div class="shortcut-card">
+      <div class="shortcut-icon">🔄</div>
+      <div class="shortcut-label">My Trips</div>
+    </div>
+    <div class="shortcut-card">
+      <div class="shortcut-icon">💬</div>
+      <div class="shortcut-label">Chats</div>
+    </div>
+    <div class="shortcut-card">
+      <div class="shortcut-icon">👤</div>
+      <div class="shortcut-label">Profile</div>
+    </div>
+  </div>
+
+  <!-- Vehicle List -->
+  <div class="vehicle-section">
+    <div class="vehicle-header">
+      <div class="vehicle-title">Choose Your Vehicle</div>
+      <div class="all-available">
+        <span class="dot"></span>
+        All Available
+      </div>
+    </div>
+    <div class="vehicle-card">
+      <div class="vehicle-img-wrap">
+        <img class="vehicle-img" src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=500&q=80" alt="Bond Street">
+        <div class="vehicle-badge">👥 4 passengers</div>
+        <div class="vehicle-price">₱150 base</div>
+      </div>
+      <div class="vehicle-info">
+        <div class="vehicle-name">BOND STREET</div>
+        <div class="vehicle-type">Standard Car</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

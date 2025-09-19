@@ -157,7 +157,7 @@
 
         }
 
-        .login-button {
+        .signup-button {
             display: block;
             margin: 0 auto;
             width: 50%;
@@ -171,7 +171,7 @@
             color: white;
         }
 
-        .login-button:hover {
+        .signup-button:hover {
             background: rgb(182, 49, 49);
         }
 
@@ -205,8 +205,7 @@
 
     <div class="login-box">
         <div id="loginHeader" class="centered-header">
-            <h3>Log In</h3>
-            <div class="subtitle">Welcome back!</div>
+            <h3>Sign Up</h3>
         </div>
 
         <div class="switch">
@@ -216,29 +215,39 @@
             </div>
         </div>
         
-
-        <div id="logInForm">
-            <div class="form">
-                <label>Username/Email</label>
-                <div class="inpt">
-                    <span class="icon">👤</span>
-                    <input type="text" required>
-                </div>
-
-            <div class="form">
-                <label>Password</label>
-                <div class="inpt">
-                    <span class="icon">🔒</span>
-                    <input type="text" required>
-                </div>
+        <form action="login.html" method="get">
+             <label>Username</label>
+            <div class="inpt">
+                <span class="icon">👤</span>
+                <input type="text" required>
             </div>
-        
-                <button type="submit" class="login-button">Signup</button>
-            </form>
+
+            <label>Email Address</label>
+            <div class="inpt">
+                <span class="icon">👤</span>
+                <input type="email" required>
+            </div>
+
+            <label>Confirm Password</label>
+            <div class="inpt">
+                <span class="icon">🔒</span>
+                <input type="password" required>
+            </div>
+
+            <label>Password</label>
+            <div class="inpt">
+                <span class="icon">🔒</span>
+                <input type="password" required>
+            </div>
+
+            <button type="submit" class="signup-button">Signup</button>
+        </form>
 
             <div class="switch-link">
-                already have an account? <a href="login.html"><br>login here</a></span>
+                already have an account? <a href="login.html"><br>Login here</a></span>
             </div>
+
+        </form>
   </div>
 </body>
 </html>

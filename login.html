@@ -5,6 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .logo img{
+            width: 100px;
+            margin-bottom: 2px;
+            height: 100px;
+            border-radius: 300%;
+            object-fit: cover;
+        }
+
+        .compname {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .login-box {
+            width: 300px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background-image: url('bg.jpg'); 
+            background-size: cover;  
+            background-position: right;
+        }
+
+        .centered-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .centered-header h3 {
+            margin: 0 0 3px 0;
+            font-weight: 600;
+            font-size: 22px;
+        }
+        
+        .centered-header .subtitle {
+            color: #444;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        
+        .switchbutton{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .switchbutton a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: #ddd;      
+            color: #333;                
+            transition: 0.3s;
+
+        }
+
+        .switchbutton a:first-child {
+            border-radius: 8px 0 0 8px  ;            
+        }
+
+        .switchbutton a:last-child {
+            border-radius: 0 8px 8px 0;            
+        }
+
+        .switchbutton a.active {
+            background-color: #f66;     
+            color: #fff;                
+        }
+
+        .switchbutton a:hover {
+            background-color: #f33;      
+            color: #fff;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 7px 0;
+            background: #eee;
+            color: #888;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            transition: .15s;
+        }
+
+        .tab-btn.active {
+            background: #cc3838;
+            color: #222;
+            box-shadow: 0 2px 8px #ff9c9c44;
+        }
+
+        label {
+            font-size: 13px;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .inpt {
+            margin-bottom: 15px;
+            position: relative;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .inpt input {
+            width: 80%;
+            padding: 10px 10px 10px 35px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .inpt .icon {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        
+        .forgot {
+            text-align: left;
+            font-size: 12px;
+            margin-bottom: 15px;
+
+        }
+
+        .login-button {
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            padding: 10px;
+            background: #d31313;
+            border: 1px solid rgb(59, 57, 57);
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: center;
+            color: white;
+        }
+
+        .login-button:hover {
+            background: rgb(182, 49, 49);
+        }
+
+        .switch-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 15px;
+            color: #000000;
+        }
+
+        .switch-link a {
+            color: rgb(48, 32, 109);
+            text-decoration: none;    
+            transition: 0.3s;
+        }
+
+        .switch-link a:hover {
+            color: rgb(102, 97, 170);             
+            text-decoration: underline;
+        }
+
+    </style>
+
 </head>
 <body>
     <div class="logo">
@@ -14,23 +204,43 @@
     <div class="compname">CarJen Transport<br>Service Corp.</div>
 
     <div class="login-box">
-
-        <label for="username">username/email</label>
-        <div class="inpt">
-             <span class="icon">👤</span>
-            <input type="text">
+        <div id="loginHeader" class="centered-header">
+            <h3>Log In</h3>
+            <div class="subtitle">Welcome back!</div>
         </div>
 
-        <label for="username">password</label>
-        <div class="inpt">
-            <span class="icon">🔒</span>
-            <input type="password">
+        <div class="switch">
+            <div class="switchbutton">
+                <a href="log.html" class="tab-btn active">Login</a>
+                <a href="signup.html" class="tab-btn">Signup</a>
+            </div>
         </div>
         
-        <div class="forgot"><a href="forgot.html">Forgot Password?</a></div>
+
+        <div id="logInForm">
+            <div class="form">
+                <label>Username/Email</label>
+                <div class="inpt">
+                    <span class="icon">👤</span>
+                    <input type="text" required>
+                </div>
+
+            <div class="form">
+                <label>Password</label>
+                <div class="inpt">
+                    <span class="icon">🔒</span>
+                    <input type="text" required>
+                </div>
+            </div>
         
-        <button class="login-button"><a href="log.html"></a>Login</button>
-    </div>
-       
+                <div class="forgot"><a href="forgot.html">Forgot Password?</a></div>
+                
+                <button type="submit" class="login-button">Login</button>
+            </form>
+
+            <div class="switch-link">
+                Don't have an account? <a href="signup.html"><br>Create one here</a></span>
+            </div>
+  </div>
 </body>
 </html>

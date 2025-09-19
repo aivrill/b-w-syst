@@ -1,11 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Homepage</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background-color: #d3dada;
+    color: #111827;
+  }
+  .page-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #d3dada;
+  }
+  .sidebar {
+    width: 60px;
+    background-color: #a8adb4;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    gap: 16px;
+  }
+  
+  .sidebar .icon-container {
+    position: relative;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sidebar .icon-container img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ada5a591;
+    box-shadow: inset 0 0 10px #a1acad;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #a8adb4;
+    padding: 12px 24px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .icon-container img{
+    width: 100px;
+    margin-bottom: 2px;
+    height: 100px;
+    border-radius: 300%;
+    object-fit: cover;
+}
+
+  .header-title {
+    font-size: 15px;
+    color: #111827;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+ 
+  .logout-button {
+    background-color: #ef4444; 
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  .logout-button:hover {
+    background-color: #dc2626;
+  }
+</style>
 </head>
 <body>
-    
+<div class="page-container">
+
+  <nav class="sidebar">
+    <div class="icon-container" aria-label="Company logo">
+      <img src="logo.jpg"/>
+    </div>
+
+  </nav>
+
+  <main class="main-content">
+    <header>
+      <div class="header-left">
+        <div class="header-title">CARJEN TRANSPORT SERVICE CORP.</div>
+      </div>
+
+      <div class="header-right">
+        <div class="welcome-text">Welcome</div>
+
+        <form action="login.html" method="get">
+            <button class="logout-button" type="submit" aria-label="Logout button">Logout</button>
+        </form>
+      </div>
+    </header>
+
+    </main>
+</div>
 </body>
 </html>

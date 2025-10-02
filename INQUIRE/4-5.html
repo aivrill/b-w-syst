@@ -48,19 +48,19 @@
                     <div class="contact-details">
                         <div class="detail">
                             <label for="name"><strong>Contact Name</strong></label>
-                            <input type="text" id="name" name="name">
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="detail">
                             <label for="phone"><strong>Cellphone Number</strong></label>
-                            <input type="text" id="phone" name="phone">
+                            <input type="text" id="phone" name="phone" required>
                         </div>
                         <div class="detail">
                             <label for="passengers"><strong>Number of Passengers</strong></label>
-                            <input type="number" id="passengers" name="passengers" min="1" max="5">
+                            <input type="number" id="passengers" name="passengers" min="1" max="5" required>
                         </div>
                         <div class="detail">
                             <label for="event"><strong>Event/Purpose</strong></label>
-                            <input type="text" id="event" name="event">
+                            <input type="text" id="event" name="event" placeholder="Optional">
                         </div>
                     </div>
                 </div>
@@ -78,23 +78,23 @@
                     <div class="trip-details">
                         <div class="detail">
                             <label for="pickup">Pickup Point:</label>
-                            <input type="text" id="pickup" name="pickup">
+                            <input type="text" id="pickup" name="pickup" required>
                         </div>
                         <div class="detail">
                             <label for="destination">Destination:</label>
-                            <input type="text" id="destination" name="destination">
+                            <input type="text" id="destination" name="destination" required>
                         </div>
                         <div class="detail">
                             <label for="departure">Date and Time Departure:</label>
-                            <input type="datetime-local" id="departure" name="departure">
+                            <input type="datetime-local" id="departure" name="departure" required>
                         </div>
                         <div class="detail">
                             <label for="return">Date of Return Trip:</label>
-                            <input type="date" id="return" name="return">
+                            <input type="date" id="return" name="return" required>
                         </div>
                         <div class="detail">
                             <label for="other">Other Places to Visit:</label>
-                            <input type="text" id="other" name="other">
+                            <input type="text" id="other" name="other" required>
                         </div>
                     </div>
                 </div>
@@ -114,16 +114,108 @@
                 <div class="calcu-details">
                         <div class="detail">
                             <label for="pickup">Distance km:</label>
+                            <input type="number" id="distance" name="distance" required>
+                            
                             <a href="https://www.google.com/maps" target="_blank" class="maps-link">Check on Google Maps</a>
-                            <input type="number" id="distance" name="distance">
                         </div>
                         <div class="detail">
                             <label for="destination">Number of Days:</label>
-                            <input type="text" id="days" name="days">
+                            <input type="text" id="days" name="days" required>
                         </div>
                 </div>
+
+                <div class="farebox">
+                    <div class="preview">Live Fare Preview</div>
+
+                    <div class="loob">
+                        <div class="base-fare">
+                            <span>Base Fare:</span>
+                            <span id="base-fare-value">₱0.00</span>
+                        </div>
+                        <div class="distance-fare">
+                            <span>Distance (km):</span>
+                            <span id="distance-value">0 km</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="estimated-fare">
+                        <span>Estimated Fare: </span>
+                        <span id="estimated-fare">₱0.00</span>
+                    </div>
+                </div>
+                <button id="calculate-btn">Calculate Fare</button>
+            </div>
+    </div>
+
+        <div class="side-boxes">
+    <div class="side-box" id="selected-passengers">
+        <h3>Selected Passengers</h3>
+        <img src="vios.jpg" alt="Vehicle" class="vehicle-img">
+        <div class="side-info">
+            <div><span id="passenger-count">Passenger</span></div>
+            <div>Base Rate: <span id="base-rate">₱100</span></div>
+            <div>Per km: <span id="per-km">₱100</span></div>
         </div>
     </div>
+
+    <div class="side-box" id="faqs-box">
+        <h3>FAQS</h3>
+        <div class="side-info">
+            <div><strong>Q:</strong> How do I make a booking?</div>
+            <div><strong>A:</strong> You can make a booking by filling out the inquiry form with your trip details and contact information.</div>
+            <br>
+            <div><strong>Q:</strong> How is the fare calculated?</div>
+            <div><strong>A:</strong> The fare is calculated based on the distance of your trip and the number of days you require the vehicle.</div>
+        </div>
     </div>
+</div>
+    
+
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inputs sa calculation details
+            const distanceInput = document.getElementById("distance");
+            const daysInput = document.getElementById("days");
+
+            // Elements sa fare preview
+            const baseFareValue = document.getElementById("base-fare-value");
+            const distanceValue = document.getElementById("distance-value");
+            const estimatedFare = document.getElementById("estimated-fare");
+
+            // Rates
+            const baseRatePerDay = 100; // 1 day = 100
+            const ratePerKm = 50;      // 1 km = 100
+
+            function updateFare() {
+                const distance = parseFloat(distanceInput.value) || 0;
+                const days = parseFloat(daysInput.value) || 0;
+
+                const baseFare = days * baseRatePerDay;
+                const distanceFare = distance * ratePerKm;
+                const totalFare = baseFare + distanceFare;
+
+                // Update preview
+                baseFareValue.textContent = `₱${baseFare.toFixed(2)}`;
+                distanceValue.textContent = `${distance} km`;
+                estimatedFare.textContent = `₱${totalFare.toFixed(2)}`;
+            }
+
+            // Update while typing
+            distanceInput.addEventListener("input", updateFare);
+            daysInput.addEventListener("input", updateFare);
+
+            // Optional: initial update
+            updateFare();
+
+            // Button to go to summary page
+            const calculateBtn = document.getElementById("calculate-btn");
+            calculateBtn.addEventListener("click", function() {
+                window.location.href = "SUMMARY/tripsumm.html"; 
+            });
+        });
+    </script>
+
 </body>
 </html>

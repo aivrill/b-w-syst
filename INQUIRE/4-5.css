@@ -337,7 +337,6 @@ body{
     box-shadow: #928e8e 0px 4px 8px;
     display: flex;
     flex-direction: column; 
-    align-items: center;    
     gap: 10px;           
 }
 

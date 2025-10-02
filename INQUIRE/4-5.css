@@ -1,0 +1,284 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif; /* font style */
+    background-color: #cdcecf; /* background color */
+}
+
+.header {
+    height: 65px; /* header box*/
+    display: flex; /* horizontal na text sa header */
+    justify-content: space-between; /* space between left and right na text*/
+    align-items: center;
+    padding: 10px 20px; /* padding sa left and right */
+    background-color: #f2f2f2;
+    border: 1px solid transparent; /* border sa header */
+    border-bottom-color: #796a6a;
+}
+
+.boxofinfo {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 50px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column; /* vertical na icon at text */
+    align-items: center; /* center align */
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.left {
+    display: flex; /* horizontal na text sa left */
+    align-items: center; /* vertical na text sa left */
+}
+
+.logo {
+    width: 40px; 
+    height: 40px;
+    margin-right: 10px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px; /* margin to align with logo */
+}
+
+.right{
+    text-align: right; /* align text to the right side of header */
+    margin-top: 20px; /* margin to align with logo */
+}
+
+.right .title {
+    font-weight: bold;
+    font-size: 20px; 
+}
+
+.right .subtitle {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+
+.main-box {
+    display: flex; 
+    margin-top: 50px; /* optional spacing from top */
+    margin-left: 50px;
+    min-height: 100vh; 
+}
+
+.form-box {
+    width: 500px;
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: #928e8e 0px 4px 8px; /* shadow effect */
+}
+
+.trip {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: block; 
+}
+
+.info-row {
+    display: flex; /* horizontal lang ng c at t */
+    gap: 50px; 
+
+}
+
+.contact-column {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+}
+
+.contactinfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #000;
+    width: max-content;
+    padding-right: 50px;
+}
+
+.contactinfo .icon a {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+}
+
+.contactinfo .info span {
+    font-size: 16px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.contact-details .detail {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.contact-details .detail label {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.contact-details .detail input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #d1b9b9;
+    box-shadow: #d4d2d2 0px 2px 4px;
+    border-radius: 4px;
+    width: 150px;
+    margin-left: 20px; 
+    font-weight: lighter;
+}
+
+.trip-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tripinfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #000000;
+    width: max-content;
+    padding-right: 50px;
+}
+
+.tripinfo .icon a {
+    font-size: 18px;
+    color: #000;
+}
+
+.tripinfo .info span {
+    font-size: 16px;
+}
+
+.tripinfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #000;
+    width: max-content;
+    padding-right: 50px;
+}
+
+.tripinfo .icon a {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+}
+
+.tripinfo .info span {
+    font-size: 16px;
+}
+
+.trip-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.trip-details .detail {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.trip-details .detail label {
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.trip-details .detail input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #d1b9b9;
+    box-shadow: #d4d2d2 0px 2px 4px;
+    border-radius: 4px;
+    width: 150px;
+    margin-left: 20px; 
+    font-weight: lighter;
+}
+
+.calcu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #000000;
+    width: max-content;
+    padding-right: 300px;
+}
+
+.calcu .icon a {
+    font-size: 18px;
+    color: #000;
+}
+
+.calcu .info span {
+    font-size: 16px;
+}
+
+.calcu-details {
+    margin-top: 10px;
+    display: flex; /* horizontal layout */
+    gap: 90px; /* space sa pagitan ng dalawang fields */
+    align-items: flex-start; /* pantay sa taas */
+}
+
+.calcu-details .detail {
+    display: flex;
+    flex-direction: column; /* label sa taas ng input */
+    gap: 5px;
+}
+
+.calcu-details .detail input {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px; /* adjust kung gusto mo mas malapad */
+}
+.maps-link {
+    font-size: 10px;
+    color: blue;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+

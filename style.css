@@ -4,7 +4,7 @@
   --panel: #e9efef;
   --card-bg: #f7fbfb;
   --accent: #1677c6;
-  --muted: #8a8f90;
+  --muted: #474e50;
 }
 
 * { box-sizing: border-box; }
@@ -18,7 +18,7 @@ body {
   align-items: flex-start;
   padding: 22px;
   min-height: 100vh;
-  color: #222;
+  color: #161414;
 }
 
 .app {

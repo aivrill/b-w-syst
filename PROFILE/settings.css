@@ -1,19 +1,14 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--primary);
+  color: var(--text-dark);
   display: flex;
   height: 100vh;
-  background-color: #06697d;
-  color: #333;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  --primary: #06697d;
 }
 
-body.dark-mode {
-  background-color: #18191a;
-  color: #e4e6eb;
-}
-
-/* Sidebar (Consistent with Profile) */
 .sidebar {
   background: white;
   width: 280px;
@@ -28,11 +23,14 @@ body.dark-mode {
   top: 0;
   left: 0;
   transition: background-color 0.3s ease;
+
+  overflow-y: auto; /* allow vertical scroll */
+  scrollbar-width: thin; /* for Firefox */
+  scrollbar-color: #ccc transparent; /* for Firefox */
 }
 
-body.dark-mode .sidebar {
-  background-color: #242526;
-  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+.sidebar.open {
+  transform: translateX(0);
 }
 
 .user-info {
@@ -40,41 +38,32 @@ body.dark-mode .sidebar {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: var(--spacing-lg);
 }
 
 .user-info img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  border: 3px solid #06697d;
-  margin-bottom: 10px;
+  border: 3px solid var(--primary);
+  margin-bottom: var(--spacing-sm);
 }
 
-body.dark-mode .user-info img {
-  border-color: #2b79ff;
-}
 
 .user-info h3 {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-dark);
 }
 
-body.dark-mode .user-info h3 {
-  color: #e4e6eb;
-}
 
 .user-info p {
-  margin: 2px 0 0 0;
+  margin: var(--spacing-sm) 0 0 0;
   color: gray;
   font-size: 13px;
 }
 
-body.dark-mode .user-info p {
-  color: #b0b3b8;
-}
 
 .menu {
   display: flex;
@@ -95,23 +84,32 @@ body.dark-mode .user-info p {
   font-weight: 500;
 }
 
+.submenu {
+  display: none;
+  flex-direction: column; /* vertical */
+  margin-left: 25px;
+}
+
+.submenu a {
+  display: block;
+  color: #555;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.submenu a:hover {
+  background-color: #f1f4f6;
+  color: #06697d;
+}
+
 .menu a:hover,
 .menu a.active {
   background-color: #f1f4f6;
   color: #06697d;
 }
 
-body.dark-mode .menu a {
-  color: #e4e6eb;
-}
-
-body.dark-mode .menu a:hover,
-body.dark-mode .menu a.active {
-  background-color: #3a3b3c;
-  color: #2b79ff;
-}
-
-/* Main Content */
 .main {
   flex: 1;
   margin-left: 280px;
@@ -122,7 +120,23 @@ body.dark-mode .menu a.active {
   overflow-y: auto;
   min-height: 100vh;
 }
-
+.submenu {
+  display: none;
+  flex-direction: column; /* vertical */
+  margin-left: 25px;
+}
+.submenu a {
+  display: block;
+  color: #555;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.submenu a:hover {
+  background-color: #f1f4f6;
+  color: #06697d;
+}
 .settings-card {
   background: white;
   border-radius: 20px;
@@ -130,11 +144,6 @@ body.dark-mode .menu a.active {
   width: 600px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
-}
-
-body.dark-mode .settings-card {
-  background-color: #242526;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Back Button */
@@ -150,13 +159,8 @@ body.dark-mode .settings-card {
   transition: color 0.2s ease;
   font-size: 14px;
 }
-
 .back-btn:hover {
   color: #1a5fe0;
-}
-
-body.dark-mode .back-btn {
-  color: #4dabf7;
 }
 
 /* Sections - Better Separation & Spacing */
@@ -167,15 +171,10 @@ body.dark-mode .back-btn {
   transition: border-color 0.3s ease;
 }
 
-body.dark-mode .section {
-  border-bottom-color: #555;
-}
-
 .section:last-child {
   margin-bottom: 0;
   border-bottom: none; /* No line on last section */
 }
-
 .section h3 {
   margin: 0 0 15px 0; /* More space below header */
   font-size: 16px;
@@ -186,19 +185,11 @@ body.dark-mode .section {
   font-weight: 600;
 }
 
-body.dark-mode .section h3 {
-  color: #e4e6eb;
-}
-
 .section p {
   margin: 0 0 15px 0; /* Space for descriptions */
   color: #666;
   font-size: 14px;
   line-height: 1.4;
-}
-
-body.dark-mode .section p {
-  color: #b0b3b8;
 }
 
 /* Inputs & Selects - Consistent Spacing */
@@ -216,14 +207,6 @@ select {
   box-sizing: border-box;
 }
 
-body.dark-mode input[type="password"],
-body.dark-mode input[type="text"],
-body.dark-mode select {
-  background-color: #3a3b3c;
-  color: #e4e6eb;
-  border-color: #555;
-}
-
 input[type="password"]:focus,
 input[type="text"]:focus,
 select:focus {
@@ -231,7 +214,6 @@ select:focus {
   border-color: #2b79ff;
   box-shadow: 0 0 0 2px rgba(43, 121, 255, 0.2);
 }
-
 /* Toggle Switches - Better Alignment & Spacing */
 .switch {
   position: relative;
@@ -241,13 +223,11 @@ select:focus {
   margin-right: 15px; /* Space from label */
   vertical-align: middle;
 }
-
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -256,7 +236,6 @@ select:focus {
   transition: 0.4s;
   border-radius: 34px;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -269,46 +248,13 @@ select:focus {
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
-
 input:checked + .slider {
   background-color: #2b79ff;
 }
-
 input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-body.dark-mode .slider {
-  background-color: #555;
-}
-
-body.dark-mode input:checked + .slider {
-  background-color: #4dabf7;
-}
-
-/* Toggle Labels - Block Display for Spacing */
-.toggle-label {
-  display: block;
-  margin-top: 8px; /* Space above label */
-  margin-bottom: 15px; /* Space below for next element */
-  font-size: 14px;
-  color: #666;
-  font-weight: 500;
-}
-
-body.dark-mode .toggle-label {
-  color: #b0b3b8;
-}
-
-/* Toggle Wrapper - For Better Alignment (Add this class to HTML if needed, but CSS handles inline) */
-.toggle-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px; /* Space between toggle rows */
-  gap: 15px;
-}
-
-/* Save Buttons - Enhanced for Pro Look */
 .save-btn {
   width: 100%; /* Full width for emphasis */
   max-width: 200px; /* Not too wide */
@@ -324,24 +270,14 @@ body.dark-mode .toggle-label {
   box-shadow: 0 2px 8px rgba(43, 121, 255, 0.2); /* Subtle shadow for button depth */
   margin-top: 10px;
 }
-
 .save-btn:hover {
   background-color: #1a5fe0;
   box-shadow: 0 4px 12px rgba(43, 121, 255, 0.3);
   transform: translateY(-1px); /* Slight lift on hover */
 }
-
 .save-btn:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(43, 121, 255, 0.4);
-}
-
-body.dark-mode .save-btn {
-  background-color: #4dabf7;
-}
-
-body.dark-mode .save-btn:hover {
-  background-color: #2b79ff;
 }
 
 /* Status Messages */
@@ -357,43 +293,3 @@ body.dark-mode .save-btn:hover {
   display: none;
 }
 
-body.dark-mode .status-msg {
-  background: #2f4f2f;
-  border-color: #4f7f4f;
-  color: #90ee90;
-}
-
-/* Mobile Responsiveness - Better Stacking */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    position: relative;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .main {
-    margin-left: 0;
-    padding: 20px;
-  }
-  .settings-card {
-    width: 100%;
-    padding: 25px;
-  }
-  .section {
-    margin-bottom: 25px; /* Slightly less on mobile */
-  }
-  .toggle-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .save-btn {
-    width: 100%;
-    max-width: none;
-  }
-  input[type="password"],
-  input[type="text"],
-  select {
-    max-width: none;
-  }
-}

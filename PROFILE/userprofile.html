@@ -1,63 +1,73 @@
 <!DOCTYPE html>
-    <html lang="en"> 
-    <head> 
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>User Profile - Car Rental System</title> 
-        <link rel="stylesheet" href="userprofile.css"> 
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> 
-    </head> 
-    <body> 
-        <div class="sidebar"> 
-            <div class="user-info"> 
-                <img src="https://via.placeholder.com/80" alt="User Profile"> 
-                <div> <h3>Mary Avril</h3> <p>maryavril@email.com</p> 
-                </div> 
-            </div>
-            <div class="menu">
-                <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="userprofile.html" class="active"><i class="fa-solid fa-user"></i> My Profile</a>
-                <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
-                <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
-                <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-            </div>
-        </div> 
-        
-        <div class="main"> 
-            <div class="profile-card" id="userInfo"> 
-                <div class="card-header"> 
-                    <div class="profile-top"> <img src="https://via.placeholder.com/60" alt="User "> 
-                        <div> <h3>Mary Avril</h3> <p>maryavril@email.com</p> 
-                        </div> 
-                    </div> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userprofile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="user-info">
+        <img src="https://via.placeholder.com/80" alt="User Profile">
+        <div>
+            <h3 id="sidebarName">Mary Avril</h3>
+            <p id="sidebarEmail">maryavril@email.com</p>
+        </div>
+    </div>
+
+    <div class="menu">
+        <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="userprofile.html" class="active">
+            <i class="fa-solid fa-user"></i> My Profile</a>
+            <a href="settings.html" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
+                <div class="submenu" id="settingsSubmenu">
+                    <a href="account.html"><i class="fa-solid fa-user-gear"></i> Account</a>
+                    <a href="settingsnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+                    <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
+                    <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
+                    <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
+                </div>
+        <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</div>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+     <div class="main">
+            <div class="profile-card" id="userInfo">
+                <div class="card-header">
+                    <div class="profile-top"> <img src="" alt="User ">
+                        <div> <h3>Mary Avril</h3> <p>maryavril@email.com</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="info">
                     <div>
                         <h4><i class="fa-solid fa-user"></i> Name</h4>
                         <input type="text" id="name" value="Mary Avril">
                     </div>
-
                     <div>
                         <h4><i class="fa-solid fa-envelope"></i> Email</h4>
                         <input type="email" id="email" value="maryavril@email.com">
                     </div>
-
                     <div>
                         <h4><i class="fa-solid fa-phone"></i> Mobile</h4>
                         <input type="text" id="mobile" value="+63 912 345 6789">
                     </div>
-
                     <div>
                         <h4><i class="fa-solid fa-map-marker-alt"></i> Location</h4>
                         <input type="text" id="location" value="Cavite, Philippines">
                     </div>
                 </div>
-
                 <button class="save-btn" onclick="saveChanges()">Save Changes</button>
                     <p id="status" class="status-msg">Changes saved!</p>
         </div>
-
         <!-- Booking History -->
         <div class="profile-card" id="bookingHistory">
             <h3><i class="fa-solid fa-history"></i> Booking History</h3>
@@ -73,19 +83,11 @@
                 </table>
             <p id="noBookingMsg" class="no-data-msg">No bookings yet.</p>
         </div>
-
             <!-- Footer -->
             <footer class="footer">
                 <p>&copy; 2023 Car Rental System. All rights reserved.</p>
             </footer>
 
-        <script>
-            // Shared Utilities: Dark Mode, Mobile Toggle, Logout, Toasts, Profile Load
-            document.addEventListener('DOMContentLoaded', function() {
-            // Dark Mode (load from localStorage, apply if enabled)
-            const isDark = localStorage.getItem('darkMode') === 'enabled';
-                if (isDark) document.body.classList.add('dark-mode');
-            });
-        </script>
-    </body> 
+
+</body>
 </html>

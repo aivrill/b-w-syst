@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notifications - Car Rental System</title>
-  <link rel="stylesheet" href="notif.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="notif.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Document</title>
 </head>
 <body>
-
   <div class="sidebar">
     <div class="user-info">
-      <img src="https://via.placeholder.com/80" alt="User  Profile">
-      <div>
-        <h3 id="sidebarName">Mary Avril</h3>
-        <p id="sidebarEmail">maryavril@email.com</p>
-      </div>
+        <img src="https://via.placeholder.com/80" alt="User Profile">
+        <div>
+            <h3 id="sidebarName">Mary Avril</h3>
+            <p id="sidebarEmail">maryavril@email.com</p>
+        </div>
     </div>
 
     <div class="menu">
-      <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
-      <a href="userprofile.html"><i class="fa-solid fa-user"></i> My Profile</a>
-      <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
-      <a href="notif.html" class="active"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="userprofile.html">
+            <i class="fa-solid fa-user"></i> My Profile</a>
+            <a href="settings.html" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
+                <div class="submenu" id="settingsSubmenu">
+                    <a href="account.html"><i class="fa-solid fa-user-gear"></i> Account</a>
+                    <a href="settingsnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+                    <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
+                    <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
+                    <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
+                </div>
+
+            <a href="notif.html"class="active"><i class="fa-solid fa-bell"></i> Notifications</a>
+            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
-  </div>
+</div>
 
-  <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar menu">
-    <i class="fa-solid fa-bars"></i>
-  </button>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
 
-  <div class="main">
+    <div class="main">
     <!-- Notifications Card -->
     <div class="profile-card" id="notificationsCard">
       <div class="card-header">
         <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
         <div class="header-actions">
-          <span id="unreadCount" class="unread-badge" aria-label="Unread notifications count">3</span>
           <input type="search" id="searchNotifications" placeholder="Search notifications..." aria-label="Search notifications">
           <button class="save-btn clear-all-btn" onclick="clearAllNotifications()" aria-label="Clear all notifications">
             <i class="fa-solid fa-trash"></i> Clear All
           </button>
         </div>
       </div>
-
       <div id="notificationsList" class="notifications-list">
-        <!-- Dynamic content via JS -->
-      </div>
-      <p id="noNotifMsg" class="no-data-msg">No notifications yet. <button class="save-btn" onclick="addSampleNotification()" aria-label="Add sample notification">Add Sample</button></p>
+        <div class="notification-item">
+        </div>
+      <p id="noNotifMsg" class="no-data-msg">No notifications yet.</button></p>
     </div>
   </div>
-
   <script>
-    // Shared Utilities: Dark Mode, Mobile Toggle, Logout, Toasts, Profile Load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Dark Mode (load from localStorage, apply if enabled)
-      const isDark = localStorage.getItem('darkMode') === 'enabled';
-      if (isDark) document.body.classList.add('dark-mode');
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsSubmenu = document.getElementById("settingsSubmenu");
+    settingsBtn.addEventListener("click", (e) => {e.preventDefault();
+      if (settingsSubmenu.style.display === "block") {
+        settingsSubmenu.style.display = "none";
+      } else {
+        settingsSubmenu.style.display = "block";
+      }
     });
   </script>
-
 </body>
 </html>

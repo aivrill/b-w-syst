@@ -1,165 +1,38 @@
-:root {
-    --primary: #06697d;
-    --accent: #2b79ff;
-    --accent-hover: #1a5fe0;
-    --success: #28a745;
-    --error: #dc3545;
-    --warning: #ffc107;
-    --info: #17a2b8;
-    --bg-light: white;
-    --bg-dark: #242526;
-    --text-dark: #333;
-    --text-light: #e4e6eb;
-    --text-muted: #666;
-    --border-light: #eee;
-    --border-dark: #555;
-    --shadow-light: 0 5px 25px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
-    --spacing-sm: 8px;
-    --spacing-md: 15px;
-    --spacing-lg: 25px;
-    --border-radius: 12px;
-    --transition: all 0.3s ease;
-}
-    body.dark-mode {
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-}
-
-body.dark-mode .sidebar {
-    background-color: var(--bg-dark);
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
-}
-body.dark-mode .user-info img {
-    border-color: var(--accent);
-}
-body.dark-mode .profile-card,
-body.dark-mode #userInfo {
-    background-color: var(--bg-dark);
-    box-shadow: var(--shadow-light);
-}
-body.dark-mode .menu a {
-    color: var(--text-light);
-}
-
-body.dark-mode .menu a:hover,
-body.dark-mode .menu a.active {
-    background-color: #3a3b3c;
-    color: var(--accent);
-}
-body.dark-mode .dark-mode-toggle {
-    color: var(--text-light);
-}
-body.dark-mode .dark-mode-toggle:hover {
-    background-color: #3a3b3c;
-    color: var(--accent);
-}
-body.dark-mode .profile-card {
-    background-color: var(--bg-dark);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-}
-body.dark-mode .info > div {
-    background-color: #3a3b3c;
-}
-
-body.dark-mode .info h4 {
-    color: var(--text-light);
-}
-body.dark-mode input,
-body.dark-mode select {
-    background-color: #3a3b3c;
-    color: var(--text-light);
-    border-color: var(--border-dark);
-}
-body.dark-mode input::placeholder {
-    color: var(--text-muted);
-}
-body.dark-mode input:focus,
-body.dark-mode select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 5px rgba(43, 121, 255, 0.3);
-}
-body.dark-mode .profile-top h3 {
-    color: var(--text-light);
-}
-
-body.dark-mode .status-badge {
-    color: white;
-}
-body.dark-mode .action-link {
-    color: var(--accent);
-}
-body.dark-mode .action-link.cancel {
-    color: var(--error);
-}
-body.dark-mode .no-data-msg {
-    color: var(--text-muted);
-    background: #3a3b3c;
-    border-color: var(--border-dark);
-}
-body.dark-mode .footer {
-    background-color: #1a1a1a;
-    color: var(--text-light);
-}
-
-body.dark-mode #bookingTable {
-    background-color: var(--bg-dark);
-}
-body.dark-mode .table-header th {
-    background-color: #3a3b3c;
-    color: var(--text-light);
-}
-body.dark-mode #bookingTable td {
-    border-bottom-color: var(--border-dark);
-    color: var(--text-light);
-}
-body.dark-mode #bookingTable tr:nth-child(even) {
-    background-color: #2d2e30;
-}
-body.dark-mode #bookingTable tr:hover {
-    background-color: #3a3b3c;
-}
-
-body.dark-mode .profile-top p {
-    color: var(--text-muted);
-}
-body.dark-mode .save-btn {
-    background-color: var(--accent);
-}
-body.dark-mode .save-btn:hover {
-    background-color: var(--accent-hover);
-}
-body.dark-mode .status-msg {
-    background: rgba(40, 167, 69, 0.2);
-    color: var(--success);
-    border-color: var(--success);
-}
-body.dark-mode #bookingHistory h3,
-body.dark-mode #preferences h3 {
-    color: var(--text-light);
-}
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #06697d;
+    background-color: var(--primary);
+    color: var(--text-dark);
     display: flex;
     height: 100vh;
+    transition: var(--transition);
+    --primary: #06697d;
 }
+
 
 .sidebar {
     background: white;
-    width: 280px; 
+    width: 280px;
     height: 100vh;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 30px 25px; 
+    padding: 30px 25px;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
+    transition: background-color 0.3s ease;
+
+    overflow-y: auto; /* allow vertical scroll */
+    scrollbar-width: thin; /* for Firefox */
+    scrollbar-color: #ccc transparent; /* for Firefox */
+}
+
+
+.sidebar.open {
+    transform: translateX(0);
 }
 
 .user-info {
@@ -167,28 +40,31 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .user-info img {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid #06697d;
-    margin-bottom: 10px;
+    border: 3px solid var(--primary);
+    margin-bottom: var(--spacing-sm);
 }
 
 .user-info h3 {
     margin: 0;
     font-size: 17px;
     font-weight: 600;
+    color: var(--text-dark);
 }
 
+
 .user-info p {
-    margin: 2px 0 0 0;
+    margin: var(--spacing-sm) 0 0 0;
     color: gray;
     font-size: 13px;
 }
+
 
 .menu {
     display: flex;
@@ -209,13 +85,33 @@ body {
     font-weight: 500;
 }
 
+.submenu {
+    display: none;
+    flex-direction: column; /* vertical */
+    margin-left: 25px;
+}
+
+.submenu a {
+    display: block;
+    color: #555;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.submenu a:hover {
+    background-color: #f1f4f6;
+    color: #06697d;
+}
+
 .menu a:hover,
 .menu a.active {
     background-color: #f1f4f6;
     color: #06697d;
 }
 
-/* Main content */
+
 .main {
     flex: 1;
     display: flex;
@@ -227,7 +123,6 @@ body {
     height: 100vh;
     gap: 20px; /* Space between cards */
 }
-
 /* Profile Card */
 .profile-card {
     background: white;
@@ -237,38 +132,32 @@ body {
     box-shadow: 0 5px 25px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 }
-
 .card-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
-
 .profile-top {
     display: flex;
     align-items: center;
     gap: 12px;
     flex: 1;
 }
-
 .profile-top img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
 }
-
 .profile-top h3 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
 }
-
 .profile-top p {
     margin: 2px 0 0 0;
     color: gray;
     font-size: 13px;
 }
-
 /* Section Headers */
 #bookingHistory h3,
 #preferences h3 {
@@ -279,7 +168,6 @@ body {
     align-items: center;
     gap: 8px;
 }
-
 /* Inputs and Selects */
 input,
 select {
@@ -290,26 +178,22 @@ select {
     font-size: 14px;
     margin-top: 5px;
 }
-
 input:focus,
 select:focus {
     outline: none;
     border-color: #2b79ff;
     box-shadow: 0 0 5px rgba(43, 121, 255, 0.3);
 }
-
 input{
     background-color: #f8f9fa;
     cursor: text;
 }
-
 .info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     margin-bottom: 20px;
 }
-
 .info h4 {
     margin: 0 0 5px 0;
     font-size: 13px;
@@ -318,19 +202,16 @@ input{
     align-items: center;
     gap: 5px;
 }
-
 label {
     display: block;
     font-size: 14px;
     color: #666;
     margin-top: 5px;
 }
-
 input[type="checkbox"] {
     width: auto;
     margin-right: 8px;
 }
-
 /* Save Button */
 .save-btn {
     width: 100%;
@@ -343,11 +224,9 @@ input[type="checkbox"] {
     cursor: pointer;
     transition: 0.3s;
 }
-
 .save-btn:hover {
     background-color: #1a5fe0;
 }
-
 /* Status Message */
 .status-msg {
     color: green;
@@ -359,7 +238,6 @@ input[type="checkbox"] {
     border-radius: 6px;
     border: 1px solid #c3e6cb;
 }
-
 /* Booking Table */
 #bookingHistory table {
     width: 100%;
@@ -367,39 +245,34 @@ input[type="checkbox"] {
     font-size: 14px;
     margin-bottom: 10px;
 }
-
 #bookingHistory th,
 #bookingHistory td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: left;
 }
-
 .table-header th {
     background-color: #f1f1f1;
     color: #333;
     font-weight: 600;
     text-align: center;
 }
-
 #bookingHistory tr:nth-child(even) {
     background-color: #fafafa;
 }
-
 #bookingHistory tr:hover {
     background-color: #f0f8ff;
 }
-
 .status-badge {
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: bold;
 }
-
 .action-link {
     color: #2b79ff;
     text-decoration: none;
     margin-right: 10px;
 }
+
 

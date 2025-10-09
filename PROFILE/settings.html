@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Car Rental System</title>
+  <link rel="stylesheet" href="settings.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-info">
+            <img src="https://via.placeholder.com/80" alt="User  Profile">
+            <div>
+                <h3>Mary Avril</h3>
+                <p>maryavril@email.com</p>
+            </div>
+        </div>
+
+        <div class="menu">
+            <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="userprofile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+            <a href="settings.html" class="active"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="settings-card">
+
+      <!-- Appearance / Dark Mode -->
+        <div class="section">
+            <h3><i class="fa-solid fa-moon"></i> Appearance / Dark Mode</h3>
+            <p>Reduce glare and give your eyes a break.</p>
+                <label class="switch">
+                    <input type="checkbox" id="darkToggle">
+                    <span class="slider"></span>
+                </label>
+            <span id="darkStatus" class="toggle-label">Current mode: Off</span>
+        </div>
+
+      <!-- Change Password -->
+        <div class="section">
+            <h3><i class="fa-solid fa-lock"></i> Change Password</h3>
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+            <input type="password" id="confirmPassword" placeholder="Confirm Password">
+            <button class="save-btn" onclick="savePassword()">Save Password</button>
+            <p id="passwordStatus" class="status-msg" style="display:none;">Password updated!</p>
+        </div>
+
+      <!-- Notifications (Car Rental Specific) -->
+        <div class="section">
+            <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
+                <label class="switch">
+                    <input type="checkbox" id="bookingToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            <span class="toggle-label">Booking Reminders (e.g., pickup alerts)</span>
+
+            <br><br>
+
+                <label class="switch">
+                    <input type="checkbox" id="securityToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            <span class="toggle-label">Security Alerts (e.g., unusual login)</span>
+        </div>
+
+      <!-- Privacy (Car Rental Specific) -->
+        <div class="section">
+            <h3><i class="fa-solid fa-user-shield"></i> Privacy</h3>
+                <label class="switch">
+                    <input type="checkbox" id="shareHistoryToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            <span class="toggle-label">Share Rental History with Admins</span>
+
+            <br><br>
+
+                <label class="switch">
+                    <input type="checkbox" id="locationToggle">
+                    <span class="slider"></span>
+                </label>
+            <span class="toggle-label">Share Location for Pickup Services</span>
+        </div>
+
+      <!-- Rental Preferences (New Car-Specific Section) -->
+        <div class="section">
+            <h3><i class="fa-solid fa-car"></i> Rental Preferences</h3>
+                <label class="switch">
+                    <input type="checkbox" id="insuranceToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            <span class="toggle-label">Auto-Add Full Insurance (Recommended)</span>
+            
+            <br><br>
+
+                <select id="vehicleClass">
+                    <option value="standard">Standard Vehicles</option>
+                    <option value="premium">Premium Vehicles</option>
+                </select>
+            <span class="toggle-label" style="display:block; margin-top:5px;">Preferred Vehicle Class</span>
+        </div>
+
+      <!-- Language -->
+        <div class="section">
+            <h3><i class="fa-solid fa-globe"></i> Language</h3>
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="tl">Tagalog</option>
+                    <option value="es">Spanish</option>
+                </select>
+        </div>
+
+      <!-- Payment Methods (Car Rental Specific) -->
+        <div class="section">
+            <h3><i class="fa-solid fa-credit-card"></i> Payment Methods</h3>
+            <p>Default: Visa ****1234</p>
+            <input type="text" id="newPayment" placeholder="Add new card or wallet (e.g., GCash)">
+            <button class="save-btn" onclick="addPayment()">Add Payment</button>
+        </div>
+
+      <!-- Billing Address (New Car-Specific Section) -->
+        <div class="section">
+            <h3><i class="fa-solid fa-map-pin"></i> Billing Address</h3>
+            <input type="text" id="billingAddress" placeholder="Street Address" value="123 Sample St, Cavite">
+            <input type="text" id="billingCity" placeholder="City" value="Cavite City">
+            <button class="save-btn" onclick="saveBilling()">Save Address</button>
+        </div>
+
+        <!-- Support -->
+        <div class="section">
+            <h3><i class="fa-solid fa-headset"></i> Support</h3>
+            <p>For rental issues, contact us at support@carrental.com or +63 912 345 6789.</p>
+            <button class="save-btn" onclick="openSupport()">Open Support Chat</button>
+        </div>
+    </div>
+
+    <script>
+    // Load saved states from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+        // Dark mode
+        const darkToggle = document.getElementById('darkToggle');
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            darkToggle.checked = true;
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkStatus').textContent = 'Current mode: On';
+        }
+        darkToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', darkToggle.checked ? 'enabled' : 'disabled');
+            document.getElementById('darkStatus').textContent = 'Current mode: ' + (darkToggle.checked ? 'On' : 'Off');
+        });
+        });
+    </script>
+</body>
+</html>

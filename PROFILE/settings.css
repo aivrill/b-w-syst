@@ -1,0 +1,399 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #06697d;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #18191a;
+  color: #e4e6eb;
+}
+
+/* Sidebar (Consistent with Profile) */
+.sidebar {
+  background: white;
+  width: 280px;
+  height: 100vh;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .sidebar {
+  background-color: #242526;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.user-info img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #06697d;
+  margin-bottom: 10px;
+}
+
+body.dark-mode .user-info img {
+  border-color: #2b79ff;
+}
+
+.user-info h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+}
+
+body.dark-mode .user-info h3 {
+  color: #e4e6eb;
+}
+
+.user-info p {
+  margin: 2px 0 0 0;
+  color: gray;
+  font-size: 13px;
+}
+
+body.dark-mode .user-info p {
+  color: #b0b3b8;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.menu a:hover,
+.menu a.active {
+  background-color: #f1f4f6;
+  color: #06697d;
+}
+
+body.dark-mode .menu a {
+  color: #e4e6eb;
+}
+
+body.dark-mode .menu a:hover,
+body.dark-mode .menu a.active {
+  background-color: #3a3b3c;
+  color: #2b79ff;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  margin-left: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px; /* Increased for more breathing room */
+  width: 600px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .settings-card {
+  background-color: #242526;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  text-decoration: none;
+  color: #2b79ff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  color: #1a5fe0;
+}
+
+body.dark-mode .back-btn {
+  color: #4dabf7;
+}
+
+/* Sections - Better Separation & Spacing */
+.section {
+  margin-bottom: 35px; /* Increased for clear division between sections */
+  padding-bottom: 20px; /* Internal padding for content */
+  border-bottom: 1px solid #eee; /* Subtle divider line for pro look */
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .section {
+  border-bottom-color: #555;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+  border-bottom: none; /* No line on last section */
+}
+
+.section h3 {
+  margin: 0 0 15px 0; /* More space below header */
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+body.dark-mode .section h3 {
+  color: #e4e6eb;
+}
+
+.section p {
+  margin: 0 0 15px 0; /* Space for descriptions */
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+body.dark-mode .section p {
+  color: #b0b3b8;
+}
+
+/* Inputs & Selects - Consistent Spacing */
+input[type="password"],
+input[type="text"],
+select {
+  width: 100%; /* Full width for better alignment */
+  max-width: 300px; /* Cap width to avoid stretching */
+  padding: 12px; /* More padding for touch-friendly */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 10px; /* Space between stacked inputs */
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+body.dark-mode input[type="password"],
+body.dark-mode input[type="text"],
+body.dark-mode select {
+  background-color: #3a3b3c;
+  color: #e4e6eb;
+  border-color: #555;
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2b79ff;
+  box-shadow: 0 0 0 2px rgba(43, 121, 255, 0.2);
+}
+
+/* Toggle Switches - Better Alignment & Spacing */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px; /* Slightly larger for pro feel */
+  height: 34px;
+  margin-right: 15px; /* Space from label */
+  vertical-align: middle;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+input:checked + .slider {
+  background-color: #2b79ff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+body.dark-mode .slider {
+  background-color: #555;
+}
+
+body.dark-mode input:checked + .slider {
+  background-color: #4dabf7;
+}
+
+/* Toggle Labels - Block Display for Spacing */
+.toggle-label {
+  display: block;
+  margin-top: 8px; /* Space above label */
+  margin-bottom: 15px; /* Space below for next element */
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+body.dark-mode .toggle-label {
+  color: #b0b3b8;
+}
+
+/* Toggle Wrapper - For Better Alignment (Add this class to HTML if needed, but CSS handles inline) */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* Space between toggle rows */
+  gap: 15px;
+}
+
+/* Save Buttons - Enhanced for Pro Look */
+.save-btn {
+  width: 100%; /* Full width for emphasis */
+  max-width: 200px; /* Not too wide */
+  padding: 12px 20px; /* Better padding */
+  border: none;
+  background-color: #2b79ff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(43, 121, 255, 0.2); /* Subtle shadow for button depth */
+  margin-top: 10px;
+}
+
+.save-btn:hover {
+  background-color: #1a5fe0;
+  box-shadow: 0 4px 12px rgba(43, 121, 255, 0.3);
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.save-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(43, 121, 255, 0.4);
+}
+
+body.dark-mode .save-btn {
+  background-color: #4dabf7;
+}
+
+body.dark-mode .save-btn:hover {
+  background-color: #2b79ff;
+}
+
+/* Status Messages */
+.status-msg {
+  color: #155724;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  font-size: 14px;
+  display: none;
+}
+
+body.dark-mode .status-msg {
+  background: #2f4f2f;
+  border-color: #4f7f4f;
+  color: #90ee90;
+}
+
+/* Mobile Responsiveness - Better Stacking */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .main {
+    margin-left: 0;
+    padding: 20px;
+  }
+  .settings-card {
+    width: 100%;
+    padding: 25px;
+  }
+  .section {
+    margin-bottom: 25px; /* Slightly less on mobile */
+  }
+  .toggle-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .save-btn {
+    width: 100%;
+    max-width: none;
+  }
+  input[type="password"],
+  input[type="text"],
+  select {
+    max-width: none;
+  }
+}

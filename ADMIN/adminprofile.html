@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Car Rental System</title>
+    <link rel="stylesheet" href="adminprofile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fa-solid fa-car"></i> Admin Panel</h2>
+            <p>Car Rental System</p>
+        </div>
+        <nav class="menu">
+            <a href="#dashboard" onclick="switchSection('dashboard')" class="active"><i class="fa-solid fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#users" onclick="switchSection('users')"><i class="fa-solid fa-users"></i> Users</a>
+            <a href="#cars" onclick="switchSection('cars')"><i class="fa-solid fa-car-side"></i> Cars</a>
+            <a href="#bookings" onclick="switchSection('bookings')"><i class="fa-solid fa-calendar-check"></i> Bookings</a>
+            <a href="#reports" onclick="switchSection('reports')"><i class="fa-solid fa-chart-bar"></i> Reports</a>
+            <a href="#settings" onclick="switchSection('settings')"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="#" class="logout" onclick="alert('Logging out... Redirecting to login.')"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </nav>
+    </div>

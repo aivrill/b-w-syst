@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="payment.css">
+    <title>payment</title>
+</head>
+<body>
+    <header class="header">
+        <a href="booking.html" class="backbuttn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+
+        <div class="container">
+            <div class="step completed">
+                <i class="fa-solid fa-calendar-check"></i>
+                <p>Booking</p>
+            </div>
+            <div class="step active">
+                <i class="fa-solid fa-credit-card"></i>
+                <p>Payment</p>
+            </div>
+            <div class="step">
+                <i class="fa-solid fa-check-circle"></i>
+                <p>Confirmation</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container2">
+        <div class="left">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GCash+Payment" alt="Honda Civic" class="car-image">
+            
+            <div class="cardetails">
+                <h2>Honda Civic</h2>
+                <div class="carinfo">
+                    <p><i class="fa-solid fa-snowflake"></i> Air Conditioner</p>
+                    <p><i class="fa-solid fa-gear"></i> Automatic Transmission</p>
+                    <p><i class="fa-solid fa-user-group"></i> 4 Passengers</p>
+                </div>
+            </div>
+            
+            <div class="bookingdetails">
+                <h3>Booking Details</h3>
+                <p><strong>Pickup:</strong> Manila Airport, Oct 12 at 10:00 AM</p>
+                <p><strong>Return:</strong> Manila Airport, Oct 15 at 10:00 AM</p>
+                <p><strong>Rental Period:</strong> 3 Days</p>
+            </div>
+        </div>
+        
+        <div class="right">
+            <h2>Payment Summary</h2>
+            
+            <div class="faresummary">
+                <div>
+                    <span>Daily Rate</span><span>₱2,000</span>
+                </div>
+                <div>
+                    <span>Days</span><span>3</span>
+                </div>
+                <div>
+                    <span>Subtotal</span><span>₱6,000</span>
+                </div>
+                <div>
+                    <span>Downpayment (50%)</span><span>₱3,000</span>
+                </div>
+                <div class="total">
+                    <span>Total Due Now</span><span>₱3,000</span>
+                </div>
+            </div>
+            
+            <div class="qrcode">
+                <p>Scan this QR code to pay via GCash:</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GCash+Payment" alt="QR Code">
+            </div>
+            
+            <div class="upload">
+                <label for="proof">Upload Screenshot of Payment:</label>
+                <input type="file" id="proof" accept="image/*">
+                <label for="id">Upload Valid ID:</label>
+                <input type="file" id="id" accept="image/*">
+            </div>
+            <button class="submitbuttn">Submit Payment</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #f7fafa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.header {
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0 25px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+.backbuttn {
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #06697d;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.backbuttn:hover {
+    background-color: #055a6b;
+    transform: translateX(-2px);
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #aaa;
+    position: relative;
+}
+
+.step i {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.step p {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.step.completed i,
+.step.completed p {
+    color: #06697d;
+}
+
+.step.active i,
+.step.active p {
+    color: #0a90a6;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    right: -75px;
+    width: 70px;
+    height: 3px;
+    background-color: #ccc;
+    z-index: -1;
+}
+
+.step.completed::after {
+    background-color: #06697d;
+}
+
+.step:last-child::after {
+    display: none;
+}
+
+
+.container2 {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin: 40px 0;
+}
+
+.left {
+    flex: 1;
+    padding: 25px 30px;
+    border-right: 1px solid #eee;
+}
+
+.car-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.cardetails h2 {
+    color: #06697d;
+    margin-bottom: 10px;
+}
+
+.carinfo p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.bookingdetails {
+    margin-top: 20px;
+}
+
+.bookingdetails h3 {
+    color: #06697d;
+    margin-bottom: 10px;
+}
+
+.right {
+    flex: 1;
+    padding: 30px 40px;
+    background-color: #f9fcfc;
+}
+
+.right h2 {
+    color: #06697d;
+    margin-bottom: 20px;
+}
+
+.faresummary {
+    margin-bottom: 25px;
+}
+
+.faresummary div {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.faresummary .total {
+    color: #06697d;
+    font-weight: 600;
+}
+
+.qrcode {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.qrcode img {
+    margin-top: 10px;
+    width: 140px;
+    height: 140px;
+}
+
+.upload label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #06697d;
+}
+
+.upload input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.submitbuttn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #06697d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.submitbuttn:hover {
+    background-color: #055a6b;
+    transform: scale(1.02);
+}

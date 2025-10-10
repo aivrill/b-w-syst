@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="settings.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <title>Account Settings</title>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="userinfo">
+      <img src="pic" alt="User Profile">
+      <div>
+        <h3 id="sidebarName">Mary Avril</h3>
+        <p id="sidebarEmail">maryavril@email.com</p>
+      </div>
+    </div>
+
+    <div class="menu">
+      <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="userprofile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+      <a href="settings.html" class="active"><i class="fa-solid fa-gear"></i> Settings</a>
+      <div class="submenu" id="settingsSubmenu" style="display:block;">
+        <a href="acc.html" class="active"><i class="fa-solid fa-user-gear"></i> Account</a>
+        <a href="settingnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
+        <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
+        <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
+      </div>
+      <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="#" id="logoutbutton"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="settingscard">
+      <h2><i class="fa-solid fa-user-gear"></i> Account Settings</h2>
+      <p>Manage your username, email, and password below.</p>
+
+      <div class="section">
+        <h3><i class="fa-solid fa-user"></i> Profile Info</h3>
+        <input type="text" placeholder="Username">
+        <input type="text" placeholder="Email Address">
+        <button class="save-btn">Save Changes</button>
+      </div>
+
+      <div class="section">
+        <h3><i class="fa-solid fa-lock"></i> Change Password</h3>
+        <input type="password" placeholder="Current Password">
+        <input type="password" placeholder="New Password">
+        <button class="save-btn">Update Password</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

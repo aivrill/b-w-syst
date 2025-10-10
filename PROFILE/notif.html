@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="notif.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="notif.css" />
 </head>
 <body>
   <div class="sidebar">
-    <div class="user-info">
-        <img src="https://via.placeholder.com/80" alt="User Profile">
-        <div>
-            <h3 id="sidebarName">Mary Avril</h3>
-            <p id="sidebarEmail">maryavril@email.com</p>
-        </div>
+    <div class="userinfo">
+      <img src="pic" alt="User Profile" />
+      <div>
+        <h3 id="sidebarName">Mary Avril</h3>
+        <p id="sidebarEmail">maryavril@email.com</p>
+      </div>
     </div>
 
     <div class="menu">
-        <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="userprofile.html">
-            <i class="fa-solid fa-user"></i> My Profile</a>
-            <a href="settings.html" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
-                <div class="submenu" id="settingsSubmenu">
-                    <a href="account.html"><i class="fa-solid fa-user-gear"></i> Account</a>
-                    <a href="settingsnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
-                    <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
-                    <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
-                    <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
-                </div>
-
-            <a href="notif.html"class="active"><i class="fa-solid fa-bell"></i> Notifications</a>
-            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="userprofile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+      <a href="settings.html" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
+      <div class="submenu" id="settingsSubmenu">
+        <a href="acc.html"><i class="fa-solid fa-user-gear"></i> Account</a>
+        <a href="settingnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
+        <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
+        <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
+      </div>
+      <a href="notif.html" class="active"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="#" id="logoutbuton"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
-</div>
+  </div>
 
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar menu">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-
-    <div class="main">
-    <!-- Notifications Card -->
-    <div class="profile-card" id="notificationsCard">
-      <div class="card-header">
+  <div class="main">
+    <div class="profilecard">
+      <div class="cardheader">
         <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
-        <div class="header-actions">
-          <input type="search" id="searchNotifications" placeholder="Search notifications..." aria-label="Search notifications">
-          <button class="save-btn clear-all-btn" onclick="clearAllNotifications()" aria-label="Clear all notifications">
+        <div class="headeractions">
+          <input type="search" id="searchNotifications" placeholder="Search notifications...">
+          <button class="clearallbuttn">
             <i class="fa-solid fa-trash"></i> Clear All
           </button>
         </div>
       </div>
+
       <div id="notificationsList" class="notifications-list">
-        <div class="notification-item">
-        </div>
-      <p id="noNotifMsg" class="no-data-msg">No notifications yet.</button></p>
+        <p id="noNotifMsg" class="nomsg">No notifications yet.</p>
+      </div>
     </div>
   </div>
+
   <script>
     const settingsBtn = document.getElementById("settingsBtn");
     const settingsSubmenu = document.getElementById("settingsSubmenu");
-    settingsBtn.addEventListener("click", (e) => {e.preventDefault();
-      if (settingsSubmenu.style.display === "block") {
-        settingsSubmenu.style.display = "none";
-      } else {
-        settingsSubmenu.style.display = "block";
-      }
+    settingsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      settingsSubmenu.style.display = settingsSubmenu.style.display === "block" ? "none" : "block";
     });
+
+    function clearAllNotifications() {
+      document.getElementById("notificationsList").innerHTML = "";
+      document.getElementById("noNotifMsg").style.display = "block";
+    }
   </script>
 </body>
 </html>

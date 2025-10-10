@@ -10,8 +10,8 @@
 </head>
 <body>
   <div class="sidebar">
-    <div class="user-info">
-        <img src="https://via.placeholder.com/80" alt="User Profile">
+    <div class="userinfo">
+        <img src="pic" alt="User Profile">
         <div>
             <h3 id="sidebarName">Mary Avril</h3>
             <p id="sidebarEmail">maryavril@email.com</p>
@@ -24,25 +24,19 @@
             <i class="fa-solid fa-user"></i> My Profile</a>
             <a href="settings.html" id="settingsBtn" class="active"><i class="fa-solid fa-gear"></i> Settings</a>
                 <div class="submenu" id="settingsSubmenu">
-                    <a href="account.html"><i class="fa-solid fa-user-gear"></i> Account</a>
-                    <a href="settingsnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+                    <a href="acc.html"><i class="fa-solid fa-user-gear"></i> Account</a>
+                    <a href="settingnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
                     <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
                     <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
                     <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
                 </div>
-
-            <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
-            <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <a href="notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="#" id="logoutbutton"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </div>
 
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle sidebar menu">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-
     <div class="main">
-        <div class="settings-card">
-      <!-- Appearance / Dark Mode -->
+        <div class="settingscard">
         <div class="section">
             <h3><i class="fa-solid fa-moon"></i> Appearance / Dark Mode</h3>
             <p>Reduce glare and give your eyes a break.</p>
@@ -52,28 +46,25 @@
                 </label>
             <span id="darkStatus" class="toggle-label">Current mode: Off</span>
         </div>
-      <!-- Change Password -->
         <div class="section">
             <h3><i class="fa-solid fa-lock"></i> Change Password</h3>
             <input type="password" id="currentPassword" placeholder="Current Password">
             <input type="password" id="newPassword" placeholder="New Password">
             <input type="password" id="confirmPassword" placeholder="Confirm Password">
-            <button class="save-btn" onclick="savePassword()">Save Password</button>
-            <p id="passwordStatus" class="status-msg" style="display:none;">Password updated!</p>
+            <button class="savebuttn" onclick="savePassword()">Save Password</button>
+            <p id="passwordStatus" class="statusmsg" style="display:none;">Password updated!</p>
         </div>
-<!-- Language -->
         <div class="section">
             <h3><i class="fa-solid fa-globe"></i> Language</h3>
                 <select id="languageSelect" onchange="changeLanguage()">
                     <option value="en">English</option>
                     <option value="tl">Tagalog</option>
                     <option value="es">Spanish</option>
-                    <option value="es">Bisaya</option>
+                    <option value="bi">Bisaya</option>
                 </select>
         </div>
     </div>
     <script>
-        // Dark mode
         const darkToggle = document.getElementById('darkToggle');
         if (localStorage.getItem('darkMode') === 'enabled') {
             darkToggle.checked = true;

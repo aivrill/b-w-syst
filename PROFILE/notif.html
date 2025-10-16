@@ -1,69 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notifications</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  <link rel="stylesheet" href="notif.css" />
-</head>
-<body>
-  <div class="sidebar">
-    <div class="userinfo">
-      <img src="pic" alt="User Profile" />
-      <div>
-        <h3 id="sidebarName">Mary Avril</h3>
-        <p id="sidebarEmail">maryavril@email.com</p>
-      </div>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications - Carjen Transport</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <div class="menu">
-      <a href="landpage.html"><i class="fa-solid fa-house"></i> Home</a>
-      <a href="userprofile.html"><i class="fa-solid fa-user"></i> My Profile</a>
-      <a href="settings.html" id="settingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
-      <div class="submenu" id="settingsSubmenu">
-        <a href="acc.html"><i class="fa-solid fa-user-gear"></i> Account</a>
-        <a href="settingnotif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
-        <a href="privacy.html"><i class="fa-solid fa-lock"></i> Privacy</a>
-        <a href="languages.html"><i class="fa-solid fa-language"></i> Languages</a>
-        <a href="help.html"><i class="fa-solid fa-circle-question"></i> Help</a>
-      </div>
-      <a href="notif.html" class="active"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="#" id="logoutbuton"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-    </div>
-  </div>
+<style>
+  :root {
+    --primary: #06697d;
+    --accent: #e7f6f8;S
+    --text-dark: #1a1a1a;
+    --text-light: #555;
+    --card-bg: #ffffff;
+    --border: #d9e3e8;
+    --hover: #055f73;
+    --background: #f4f7f9;
+  }
 
-  <div class="main">
-    <div class="profilecard">
-      <div class="cardheader">
-        <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
-        <div class="headeractions">
-          <input type="search" id="searchNotifications" placeholder="Search notifications...">
-          <button class="clearallbuttn">
-            <i class="fa-solid fa-trash"></i> Clear All
-          </button>
-        </div>
-      </div>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+  }
 
-      <div id="notificationsList" class="notifications-list">
-        <p id="noNotifMsg" class="nomsg">No notifications yet.</p>
-      </div>
-    </div>
-  </div>
+  nav {
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
 
-  <script>
-    const settingsBtn = document.getElementById("settingsBtn");
-    const settingsSubmenu = document.getElementById("settingsSubmenu");
-    settingsBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      settingsSubmenu.style.display = settingsSubmenu.style.display === "block" ? "none" : "block";
-    });
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+  }
 
-    function clearAllNotifications() {
-      document.getElementById("notificationsList").innerHTML = "";
-      document.getElementById("noNotifMsg").style.display = "block";
+  .logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  nav ul li a.logout {
+    color: #ffd6d6;
+  }
+
+  .content {
+    padding: 60px 100px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  h2 {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary);
+    padding-left: 12px;
+  }
+
+  #notifList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .notif-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--primary);
+    border-radius: 12px;
+    padding: 22px 25px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .notif-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+  }
+
+  .notif-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .notif-text {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .savebutton {
+    margin-top: 12px;
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .savebutton:hover {
+    background: var(--hover);
+    transform: scale(1.05);
+  }
+
+  .notif-card.read {
+    opacity: 0.6;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 40px 25px;
     }
-  </script>
+    nav {
+      padding: 12px 20px;
+    }
+    nav ul {
+      gap: 15px;
+    }
+  }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="logo">
+    <img src="logo.jpg" alt="Carjen Logo">
+    <span>Carjen Transport</span>
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="bookings.html">Bookings</a></li>
+    <li><a href="notif.html" class="active">Notifications</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="#" class="logout">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="content">
+  <section class="section">
+    <h2>Your Notifications</h2>
+    <div id="notifList"></div>
+  </section>
+</div>
+
+<script>
+const notifications = [
+  { title: "Booking Confirmed", text: "Your Honda City booking for Oct 10–15 has been approved.", read: false },
+  { title: "Payment Received", text: "₱4,500 successfully charged for your last rental.", read: true },
+  { title: "Exclusive Offer", text: "Get 15% off your next booking until October 30.", read: false },
+  { title: "Driver Assigned", text: "Your driver for the Toyota Vios booking is confirmed: Juan Dela Cruz.", read: true }
+];
+
+function loadNotifs() {
+  const container = document.getElementById('notifList');
+  container.innerHTML = '';
+  notifications.forEach((n, i) => {
+    container.innerHTML += `
+      <div class="notif-card ${n.read ? 'read' : ''}">
+        <div class="notif-title">${n.title}</div>
+        <div class="notif-text">${n.text}</div>
+        <button class="savebutton" onclick="markRead(${i})">
+          ${n.read ? 'Mark Unread' : 'Mark Read'}
+        </button>
+      </div>`;
+  });
+}
+
+function markRead(i) {
+  notifications[i].read = !notifications[i].read;
+  loadNotifs();
+}
+
+window.onload = loadNotifs;
+</script>
 </body>
 </html>

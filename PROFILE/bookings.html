@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookings - Carjen Transport</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #06697d;
+    --accent: #e7f6f8;
+    --text-dark: #1a1a1a;
+    --text-light: #555;
+    --border: #d9e3e8;
+    --hover: #055f73;
+    --background: #f4f7f9;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-dark);
+  }
+
+  nav {
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  nav ul li a.logout {
+    color: #ffd6d6;
+  }
+
+  .content {
+    padding: 50px 100px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .header-box {
+    background: var(--accent);
+    border-left: 6px solid var(--primary);
+    border-radius: 10px;
+    padding: 20px 25px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 25px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .tab.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .tab:hover {
+    background: var(--accent);
+    color: var(--primary);
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .rental-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--primary);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .rental-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+  }
+
+  .rental-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .rental-info img {
+    width: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .rental-details {
+    flex: 1;
+  }
+
+  .rental-details h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .rental-details p {
+    margin: 6px 0;
+    color: var(--text-light);
+  }
+
+  .bottom-section {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .bottom-box {
+    flex: 1;
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .bottom-box h4 {
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .period-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .dashed {
+    flex: 3;
+    border-bottom: 2px dashed #aaa;
+    margin: 0 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+
+  th, td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+
+  th {
+    background: var(--accent);
+    color: var(--primary);
+  }
+
+  td {
+    color: var(--text-light);
+  }
+
+  .success {
+    color: #16a34a;
+    font-weight: 500;
+  }
+
+  .repeat-btn {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .repeat-btn:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 30px 25px;
+    }
+    .rental-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="logo">
+    <img src="logo.jpg" alt="Carjen Logo">
+    <span>Carjen Transport</span>
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="bookings.html" class="active">Bookings</a></li>
+    <li><a href="notif.html">Notifications</a></li>
+    <li><a href="profile.html">Profile</a></li>
+    <li><a href="logout" class="logout">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="content">
+
+  <div class="tabs">
+    <div class="tab active" data-tab="current">Current Rental</div>
+    <div class="tab" data-tab="history">Rental History</div>
+  </div>
+
+  <div id="current" class="tab-content active">
+    <div class="rental-card">
+      <div class="rental-info">
+        <img src="" alt="Mazda CX-3">
+        <div class="rental-details">
+          <h3>Mazda CX-3</h3>
+          <p><strong>Year:</strong> 2023</p>
+          <p><strong>Engine:</strong> 1.8L Hybrid</p>
+          <p><strong>Fuel:</strong> Hybrid 5.5 L/100 km</p>
+          <p><strong>Transmission:</strong> Automatic (CVT)</p>
+          <p><strong>Seats:</strong> 5</p>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <div class="bottom-box">
+          <h4>Rental Period</h4>
+          <div class="period-line">
+            <span>Pick-up Date</span>
+            <div class="dashed"></div>
+            <span>Drop-off Date</span>
+          </div>
+          <p><strong>Oct 1, 2024 – Oct 10, 2024</strong></p>
+        </div>
+        <div class="bottom-box">
+          <h4>Location</h4>
+          <p><strong>Drop-off:</strong> Los Angeles International Airport (LAX)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="history" class="tab-content">
+    <h3>Rental History</h3>
+    <table>
+      <tr>
+        <th>Car Model</th>
+        <th>Status</th>
+        <th>Rental Date</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>Honda Civic</td>
+        <td class="success">Success</td>
+        <td>20 Oct 2024</td>
+        <td>₱25,000</td>
+        <td><a href="#" class="repeat-btn">Repeat Rental</a></td>
+      </tr>
+      <tr>
+        <td>Ford Mustang</td>
+        <td class="success">Success</td>
+        <td>26 Oct 2024</td>
+        <td>₱52,000</td>
+        <td><a href="#" class="repeat-btn">Repeat Rental</a></td>
+      </tr>
+      <tr>
+        <td>Hyundai Tucson</td>
+        <td class="success">Success</td>
+        <td>10 Nov 2024</td>
+        <td>₱32,000</td>
+        <td><a href="#" class="repeat-btn">Repeat Rental</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -163,7 +163,7 @@
       border: 3px solid #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
-    
+
     .forgot-pass {
       display: flex;
       justify-content: flex-end;
@@ -219,24 +219,6 @@
   </div>
 
   <script>
-    const modal = document.getElementById("termsModal");
-    const agreeBtn = document.getElementById("agreeBtn");
-    const agreeCheck = document.getElementById("agreeCheck");
-
-    function openTerms(e) {
-      e.preventDefault();
-      modal.style.display = "flex";
-    }
-
-    function enableAgreeBtn() {
-      agreeBtn.disabled = !agreeCheck.checked;
-      agreeBtn.classList.toggle("active", agreeCheck.checked);
-    }
-
-    function agreeAndContinue() {
-      window.location.href = "login.html";
-    }
-
     function redirectHome(e) {
     e.preventDefault();
     window.location.href = "../LANDING/landing.html"; 

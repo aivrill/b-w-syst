@@ -261,6 +261,23 @@
     .agree-btn.active {
       opacity: 1;
     }
+    .contact-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .contact-wrapper span {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #444;
+      font-size: 14px;
+    }
+
+    .contact-wrapper input {
+      padding-left: 38px; /* make space for “09” */
+    }
   </style>
 </head>
 <body>
@@ -280,7 +297,19 @@
     </div>
 
     <div class="row">
-      <input type="number" placeholder="Phone Number"  required>
+      <!-- Contact Number -->
+      <div class="contact-wrapper">
+        <span>09</span>
+        <input
+          type="text"
+          id="contact-number"
+          maxlength="9"
+          placeholder="XXXXXXXXX"
+          oninput="validateNumber(this)"
+          required
+        />
+      </div>
+
       <input type="date" placeholder="Birthdate" required>
     </div>
 
@@ -354,6 +383,9 @@
 
     function agreeAndContinue() {
       window.location.href = "login.html";
+    }
+     function validateNumber(input) {
+      input.value = input.value.replace(/[^0-9]/g, '');
     }
   </script>
 </body>

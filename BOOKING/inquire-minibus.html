@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Bus Inquiry Form</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #2b2178;
+      margin: 0;
+      padding: 0;
+      color: #2b2178;
+    }
+
+    section {
+      background-color: #fff;
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2b2178;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px 40px;
+      align-items: center;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .contact-number-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .contact-number-wrapper span {
+      background-color: #eee;
+      color: #333;
+      padding: 0 12px;
+      font-weight: 600;
+      border-right: 1px solid #ccc;
+    }
+
+    .contact-number-wrapper input {
+      border: none;
+      outline: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .places-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .place-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .remove-btn {
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background-color 0.3s;
+    }
+
+    .remove-btn:hover {
+      background-color: #b52b27;
+    }
+
+    .add-btn {
+      background-color: #2b2178;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .add-btn:hover {
+      background-color: #4338ca;
+    }
+
+    button[type="submit"] {
+      background-color: #2b2178;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      grid-column: span 2;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #4338ca;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 30px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="inquire-minibus">
+    <h2>Mini Bus (16+ Pax) Inquiry Form</h2>
+    <form>
+      <div>
+        <label for="contact-name">Contact Name</label>
+        <input type="text" id="contact-name" name="contact-name" placeholder="Enter full name" required>
+      </div>
+
+      <div>
+        <label for="contact-number">Contact Number</label>
+        <div class="contact-number-wrapper">
+          <span>09</span>
+          <input 
+            type="text" 
+            id="contact-number" 
+            name="contact-number" 
+            maxlength="9" 
+            placeholder="XXXXXXXXX" 
+            oninput="validateNumber(this)" 
+            required>
+        </div>
+      </div>
+
+      <div>
+        <label for="pickup-point">Pick-up Point</label>
+        <input type="text" id="pickup-point" name="pickup-point" placeholder="Enter pick-up location" required>
+      </div>
+      <div>
+        <label for="dropoff-point">Drop-off Point</label>
+        <input type="text" id="dropoff-point" name="dropoff-point" placeholder="Enter drop-off location" required>
+      </div>
+
+      <div>
+        <label for="pickup-date">Pick-up Date & Time</label>
+        <input type="datetime-local" id="pickup-date" name="pickup-date" required>
+      </div>
+      <div>
+        <label for="dropoff-date">Drop-off Date & Time</label>
+        <input type="datetime-local" id="dropoff-date" name="dropoff-date" required>
+      </div>
+
+      <div>
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+      </div>
+
+      <div class="full-width">
+        <label>Other Places to Visit</label>
+        <div class="places-container" id="places-container">
+          <div class="place-item">
+            <input type="text" name="places[]" placeholder="Enter place">
+            <button type="button" class="remove-btn" onclick="removePlace(this)">X</button>
+          </div>
+        </div>
+        <button type="button" class="add-btn" onclick="addPlace()">+ Add Place</button>
+      </div>
+
+      <div class="full-width">
+        <label for="reason">Reason for Booking / Event</label>
+        <textarea id="reason" name="reason" placeholder="Describe the purpose of booking..." required></textarea>
+      </div>
+
+      <button type="submit">Inquire fo Estimated Price</button>
+    </form>
+  </section>
+
+  <script>
+    function addPlace() {
+      const container = document.getElementById('places-container');
+      const div = document.createElement('div');
+      div.classList.add('place-item');
+      div.innerHTML = `
+        <input type="text" name="places[]" placeholder="Enter place">
+        <button type="button" class="remove-btn" onclick="removePlace(this)">X</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function removePlace(btn) {
+      btn.parentElement.remove();
+    }
+
+    function validateNumber(input) {
+      input.value = input.value.replace(/[^0-9]/g, ''); // allow only numbers
+    }
+  </script>
+
+</body>
+</html>

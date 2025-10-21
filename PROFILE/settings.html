@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>notifications</title>
+  <title>settings</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <style>
@@ -213,48 +213,109 @@
       background: #f1f1f9;
     }
 
-    .notif-section {
-      padding: 30px 40px;
-      background: #fff;
+    .settings-container {
+        padding: 40px;
+        background: #fafafa;
     }
 
-    .notif-title {
-      font-size: 1.3em;
-      font-weight: 700;
-      margin-bottom: 25px;
-      color: #2b2178;
+    .settings-container h2 {
+        color: #1a1a5c;
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 25px;
     }
 
-    .notification-card {
-      background: #fff;
-      border: 1px solid #eaeaea;
-      border-radius: 12px;
-      padding: 18px 22px;
-      margin-bottom: 18px;
-      transition: 0.3s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    .settings-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 25px 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .notification-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .settings-card h3 {
+        font-size: 1.1em;
+        color: #1a1a5c;
+        margin-bottom: 20px;
+        font-weight: 600;
     }
 
-    .notification-card h3 {
-      margin-bottom: 6px;
-      font-size: 1.05em;
-      color: #1a1a5c;
+    .setting-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
     }
 
-    .notification-card p {
-      color: #555;
-      font-size: 0.95em;
-      margin-bottom: 8px;
+    .setting-row:last-child {
+        border-bottom: none;
     }
 
-    .notification-card small {
-      font-size: 0.8em;
-      color: #999;
+    .setting-text strong {
+        font-weight: 600;
+        color: #222;
+    }
+
+    .setting-text p {
+        color: #666;
+        font-size: 0.9em;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0;
+        right: 0; bottom: 0;
+        background-color: #ccc;
+        transition: 0.3s;
+        border-radius: 24px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px; width: 18px;
+        left: 3px; bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider {
+        background-color: #2b2178;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(20px);
+    }
+
+    .change-btn {
+        background: #2b2178;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .change-btn:hover {
+        background: #3a2fb5;
     }
     .profile-avatar {
       width: 85px;
@@ -263,7 +324,7 @@
       background: #fff url('https://cdn-icons-png.flaticon.com/512/1077/1077012.png') center/60% no-repeat;
       margin-right: 20px;
     }
-  </style>
+</style>
 </head>
 
 <body>
@@ -311,31 +372,75 @@
     <div class="profile-tabs">
       <a href="profile.html" class="tab-link"><i class="fa-solid fa-user"></i> Personal Info</a>
       <a href="bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
-      <a href="notif.html" class="tab-link active"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="tab-link active"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
 
-    <section class="notif-section">
-      <h2 class="notif-title">Notifications</h2>
+    <section class="settings-container">
+  <h2>Account Settings</h2>
 
-      <div class="notification-card">
-        <h3>Payment Approved</h3>
-        <p>Your payment for booking #2025-0412 has been approved by the admin.</p>
-        <small>Oct 19, 2025 9:24 PM</small>
-      </div>
+  <div class="settings-card">
+    <h3>Preferences</h3>
 
-      <div class="notification-card">
-        <h3>Pending Verification</h3>
-        <p>Your uploaded receipt is under review. We will notify you once it’s verified.</p>
-        <small>Oct 19, 2025 7:51 PM</small>
+    <div class="setting-row">
+      <div class="setting-text">
+        <strong>Email Notifications</strong>
+        <p>Receive booking confirmations and updates</p>
       </div>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
 
-      <div class="notification-card">
-        <h3>Payment Rejected</h3>
-        <p>Your payment for booking #2025-0399 was declined due to invalid reference number.</p>
-        <small>Oct 18, 2025 4:30 PM</small>
+    <div class="setting-row">
+      <div class="setting-text">
+        <strong>SMS Notifications</strong>
+        <p>Get text messages for important updates</p>
       </div>
-    </section>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-row">
+      <div class="setting-text">
+        <strong>Marketing Communications</strong>
+        <p>Receive special offers and promotions</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="settings-card">
+    <h3>Security</h3>
+    <div class="setting-row">
+      <div class="setting-text">
+        <strong>Change Password</strong>
+        <p>Update your password regularly for better security</p>
+      </div>
+      <button class="change-btn">Change</button>
+    </div>
+
+    <div class="setting-row">
+      <div class="setting-text">
+        <strong>Two-Factor Authentication</strong>
+        <p>Add extra protection to your account</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+</section>
+
+
+    
   </main>
 
   <script>

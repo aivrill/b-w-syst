@@ -1,275 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile - Carjen Transport</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ser profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<style>
-  :root {
-    --primary: #06697d;
-    --accent: #e7f6f8;
-    --text-dark: #1a1a1a;
-    --text-light: #555;
-    --border: #d9e3e8;
-    --hover: #055f73;
-    --background: #f4f7f9;
-  }
-
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--background);
-    color: var(--text-dark);
-  }
-
-  nav {
-    background: var(--primary);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 40px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    font-weight: 700;
-  }
-
-  .logo img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: 0.3s;
-  }
-
-  nav ul li a:hover,
-  nav ul li a.active {
-    background: rgba(255, 255, 255, 0.25);
-  }
-
-  nav ul li a.logout {
-    color: #ffd6d6;
-  }
-
-  .content {
-    padding: 50px 100px;
-    max-width: 1000px;
-    margin: auto;
-  }
-
-  .header-box {
-    background: var(--accent);
-    border-left: 6px solid var(--primary);
-    border-radius: 10px;
-    padding: 20px 25px;
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 25px;
-  }
-
-  .profile-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 6px solid var(--primary);
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-  }
-
-  .profile-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
-  }
-
-  .profile-header {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-  }
-
-  .profile-header img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 3px solid var(--primary);
-    object-fit: cover;
-  }
-
-  .profile-header h2 {
-    color: var(--primary);
-    margin-bottom: 5px;
-  }
-
-  .profile-header p {
-    color: var(--text-light);
-  }
-
-  .profile-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px 40px;
-  }
-
-  .profile-field {
-    display: flex;
-    flex-direction: column;
-  }
-
-  label {
-    font-weight: 600;
-    color: var(--text-light);
-    margin-bottom: 6px;
-  }
-
-  input {
-    padding: 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: #fdfdfd;
-    font-size: 15px;
-    transition: 0.2s;
-  }
-
-  input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 4px rgba(6,105,125,0.3);
-  }
-
-  .button-group {
-    margin-top: 35px;
-    display: flex;
-    gap: 12px;
-  }
-
-  .savebutton {
-    background: var(--primary);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .savebutton:hover {
-    background: var(--hover);
-  }
-
-  @media (max-width: 768px) {
-    .content {
-      padding: 30px 25px;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
     }
-    .profile-form {
-      grid-template-columns: 1fr;
+
+    body {
+      background-color: #f9f9fb;
+      color: #1f1f1f;
+      overflow-x: hidden;
     }
-    .profile-header {
-      flex-direction: column;
+
+    a {
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
       align-items: center;
-      text-align: center;
+      justify-content: space-between;
+      padding: 12px 28px;
+      border-radius: 40px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
     }
-  }
-</style>
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 55px;
+    }
+
+    .company-name p {
+      font-weight: 700;
+      color: #1a1a5c;
+      font-size: 1.05em;
+      line-height: 1.1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      color: #1a1a5c;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      background: #df231f;
+      color: #fff;
+    }
+
+    .profile-menu {
+      position: relative;
+    }
+
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border-radius: 30px;
+      padding: 8px 14px;
+      font-weight: 600;
+      color: #1a1a5c;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .profile-btn:hover {
+      background: #df231f;
+      color: #fff;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 55px;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      min-width: 180px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .dropdown a {
+      padding: 12px 18px;
+      color: #1a1a5c;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .dropdown a:hover {
+      background: #df231f;
+      color: #fff;
+    }
+
+    .dropdown a.logout {
+      color: #df231f;
+      font-weight: 600;
+    }
+
+    .dropdown a.logout:hover {
+      background: #1a1a5c;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .profile-container {
+      width: 78%;
+      margin: 160px auto 60px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #2b2178, #4639c8);
+      color: #fff;
+      padding: 30px 40px;
+    }
+
+    .profile-avatar {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      background: #fff url('https://cdn-icons-png.flaticon.com/512/1077/1077012.png') center/60% no-repeat;
+      margin-right: 20px;
+    }
+
+    .profile-info h2 {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .profile-info p {
+      font-size: 0.95em;
+      opacity: 0.9;
+    }
+
+    .profile-badges {
+      margin-top: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      margin-right: 8px;
+      color: #fff;
+    }
+
+    .badge.premium { background: #675aff; }
+    .badge.verified { background: #df231f; }
+
+    .profile-tabs {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    .profile-tabs .tab-link {
+      flex: 1;
+      text-align: center;
+      padding: 16px 0;
+      font-weight: 600;
+      color: #1a1a5c;
+      transition: 0.25s;
+    }
+
+    .profile-tabs .tab-link.active {
+      border-bottom: 3px solid #2b2178;
+      background: #fff;
+      color: #2b2178;
+    }
+
+    .profile-tabs .tab-link:hover {
+      color: #df231f;
+      background: #f1f1f9;
+    }
+
+    .profile-content {
+      padding: 50px 50px 120px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .info-section,
+    .password-section {
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    h3 {
+      margin-bottom: 20px;
+      color: #2b2178;
+      font-size: 1.2em;
+    }
+
+    .info-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input {
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      border-color: #2b2178;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(43, 33, 120, 0.1);
+    }
+
+    #saveBtn {
+      position: absolute;
+      bottom: 35px;
+      right: 50px;
+      padding: 12px 30px;
+      background: #2b2178;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      height: 48px;
+      width: 230px;
+      box-shadow: 0 4px 14px rgba(43, 33, 120, 0.3);
+      transition: 0.25s;
+    }
+
+    #saveBtn:hover {
+      background: #4639c8;
+      transform: scale(1.03);
+    }
+  </style>
 </head>
 
 <body>
-<nav>
-  <div class="logo">
-    <img src="logo.jpg" alt="Carjen Logo">
-    <span>Carjen Transport</span>
-  </div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="bookings.html">Bookings</a></li>
-    <li><a href="notif.html">Notifications</a></li>
-    <li><a href="profile.html" class="active">Profile</a></li>
-    <li><a href="#" class="logout">Logout</a></li>
-  </ul>
-</nav>
-
-<div class="content">
-
-  <div class="profile-card">
-    <div class="profile-header">
-      <img src="" alt="User Photo">
-      <div>
-        <h2 id="usernameDisplay">Aiya Bundal</h2>
-        <p class="text-muted" id="emailDisplay">aiya@gmail.com</p>
+  <nav>
+    <a href="#header" class="logo">
+      <img src="../SL/logo.jpg" alt="Logo">
+      <div class="company-name">
+        <p>CarJen Transport</p>
+        <p>Services Corporation</p>
       </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="../LANDING/landing.html">Inquire</a>
+      <a href="../LANDING/landing.html">Feedbacks</a>
+      <a href="../LANDING/landing.html">Trip Album</a>
+      <a href="../LANDING/landing.html">About</a>
     </div>
 
-    <div class="profile-form">
-      <div class="profile-field">
-        <label>Full Name</label>
-        <input type="text" id="username" value="Aiya Bundal" disabled>
-      </div>
-      <div class="profile-field">
-        <label>Email</label>
-        <input type="email" id="useremail" value="aiya@example.com" disabled>
-      </div>
-      <div class="profile-field">
-        <label>Contact Number</label>
-        <input type="text" id="usercontact" value="+63 912 345 6789" disabled>
-      </div>
-      <div class="profile-field">
-        <label>Address</label>
-        <input type="text" id="useraddress" value="011 Gen Trias, Cavite City" disabled>
+    <div class="profile-menu">
+      <div class="profile-btn"><i class="fa-solid fa-user"></i><span>Profile ▾</span></div>
+      <div class="dropdown">
+        <a href="../LANDING/landing.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="../PROFILE/profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+        <a href="../PROFILE/bookings.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+        <a href="../PROFILE/settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="../LANDING/noAcc.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
       </div>
     </div>
+  </nav>
 
-    <div class="button-group">
-      <button class="savebutton" id="editBtn" onclick="enableEdit()">Edit Profile</button>
-      <button class="savebutton" id="saveBtn" style="display:none;" onclick="saveProfile()">Save Changes</button>
+  <main class="profile-container">
+    <section class="profile-header">
+      <div class="profile-avatar"></div>
+      <div class="profile-info">
+        <h2>John Smith</h2>
+        <p>john.smith@email.com</p>
+        <div class="profile-badges">
+          <span class="badge premium">Premium Member</span>
+          <span class="badge verified">Verified Driver</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="profile-tabs">
+      <a href="profile.html" class="tab-link active"><i class="fa-solid fa-user"></i> Personal Info</a>
+      <a href="bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
+      <a href="notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
-  </div>
-</div>
 
-<script>
-function enableEdit() {
-  document.querySelectorAll('.profile-form input').forEach(input => input.disabled = false);
-  document.getElementById("editBtn").style.display = "none";
-  document.getElementById("saveBtn").style.display = "inline-block";
-}
+    <section class="profile-content">
+      <div class="info-section">
+        <h3>Profile Information</h3>
+        <div class="info-fields">
+          <label>First Name</label>
+          <input type="text" id="firstName" placeholder="Enter first name">
+          <label>Last Name</label>
+          <input type="text" id="lastName" placeholder="Enter last name">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="example@email.com">
+          <label>Phone Number</label>
+          <input type="text" id="phone" placeholder="09XXXXXXXXX">
+        </div>
+      </div>
 
-function saveProfile() {
-  document.querySelectorAll('.profile-form input').forEach(input => input.disabled = true);
-  document.getElementById("editBtn").style.display = "inline-block";
-  document.getElementById("saveBtn").style.display = "none";
-  
-  document.getElementById("usernameDisplay").innerText = document.getElementById("username").value;
-  document.getElementById("emailDisplay").innerText = document.getElementById("useremail").value;
+      <div class="password-section">
+        <h3>Change Password</h3>
+        <div class="info-fields">
+          <label>Old Password</label>
+          <input type="password" id="oldPassword" placeholder="********">
+          <label>New Password</label>
+          <input type="password" id="newPassword" placeholder="********">
+        </div>
+      </div>
 
-  alert("Profile updated successfully!");
-}
-</script>
+      <button id="saveBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+    </section>
+  </main>
+
+  <script>
+    const profileBtn = document.querySelector('.profile-btn');
+    const dropdown = document.querySelector('.dropdown');
+    profileBtn.addEventListener('click', () => {
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    });
+    window.addEventListener('click', e => {
+      if (!profileBtn.contains(e.target)) dropdown.style.display = 'none';
+    });
+
+    const saveBtn = document.getElementById('saveBtn');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const nameDisplay = document.querySelector('.profile-info h2');
+
+    saveBtn.addEventListener('click', () => {
+      const firstName = firstNameInput.value.trim();
+      const lastName = lastNameInput.value.trim();
+
+      if (firstName || lastName) {
+        const fullName = `${firstName} ${lastName}`.trim();
+        nameDisplay.textContent = fullName;
+        localStorage.setItem('userName', fullName);
+        alert('Profile updated successfully!');
+      } else {
+        alert('Please enter at least a first or last name.');
+      }
+    });
+
+    window.addEventListener('load', () => {
+      const storedName = localStorage.getItem('userName');
+      if (storedName) nameDisplay.textContent = storedName;
+    });
+  </script>
 </body>
 </html>

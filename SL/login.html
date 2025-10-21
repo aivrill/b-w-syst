@@ -1,269 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>log in</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
   <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: 
-        linear-gradient(rgba(45, 35, 80, 0.55), rgba(15, 10, 25, 0.85)),
-        url('bg.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    color: #fff;
+      background: linear-gradient(135deg, #2b2178 70%, #fff 30%);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 8%;
+      position: relative;
     }
 
-    .container {
-    width: 950px;
-    height: 620px;
-    display: flex;
-    border-radius: 20px;
-    overflow: hidden;
-    background: rgba(40, 40, 60, 0.45);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
-    transition: all 0.3s ease;
-    }
-
-    .leftpanel {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    color: #fff;
-    text-align: center;
-    }
-
-    .leftpanel img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 18px;
-    border: 3px solid #a78bfa;
-    box-shadow: 0 0 25px rgba(167, 139, 250, 0.4);
-    }
-
-    .leftpanel h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-    }
-
-    .leftpanel p {
-    font-size: 14px;
-    line-height: 1.5;
-    max-width: 300px;
-    color: #e2e8f0;
-    }
-
-    .divider {
-    width: 1.5px;
-    background: rgba(255, 255, 255, 0.15);
-    height: 75%;
-    align-self: center;
-    }
-
-    .rightpanel {
-    flex: 1.1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    }
-
+    /* White signup form directly on background */
     .formbox {
-    width: 100%;
-    max-width: 380px;
-    background: rgba(255, 255, 255, 0.336);
-    padding: 35px 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+      width: 420px;
+      background: #fff;
+      padding: 40px 45px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
     }
 
     .formbox:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 35px rgba(139, 92, 246, 0.35);
+      box-shadow: 0 15px 35px rgba(43, 33, 120, 0.3);
     }
 
     .formbox h3 {
-    font-size: 26px;
-    color: #c4b5fd;
-    font-weight: 700;
-    margin-bottom: 8px;
-    text-align: center;
+      font-size: 26px;
+      color: #2b2178;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
     }
 
     .formbox p {
-    color: #d1d5db;
-    font-size: 14px;
-    margin-bottom: 25px;
-    text-align: center;
+      color: #4b5563;
+      font-size: 14px;
+      margin-bottom: 25px;
+      text-align: center;
     }
 
     .row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 14px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    .inputform {
-    margin-bottom: 14px;
+    .inputgroup {
+      margin-bottom: 14px;
     }
 
     input {
-    width: 100%;
-    padding: 11px 15px;
-    border: 1.3px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.15);
-    color: #f8fafc;
+      width: 100%;
+      padding: 11px 15px;
+      border: 1.3px solid #ccc;
+      border-radius: 25px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
     }
 
     input::placeholder {
-    color: #c7c7c7;
+      color: #999;
     }
 
     input:focus {
-    border-color: #a78bfa;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0 8px rgba(167, 139, 250, 0.4);
+      border-color: #2b2178;
+      box-shadow: 0 0 6px rgba(43, 33, 120, 0.3);
     }
 
-    .forgot-pass {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+    .login {
+      width: 100%;
+      padding: 12px;
+      background: #2b2178;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 18px;
+      box-shadow: 0 5px 15px rgba(43, 33, 120, 0.45);
     }
 
-    .forgot-pass a {
-    color: #a5b4fc;
-    font-size: 13px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    }
-
-    .forgot-pass a:hover {
-    text-decoration: underline;
-    color: #c4b5fd;
-    }
-
-
-    .loginbutton {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #6366f1, #4338ca);
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 18px;
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.35);
-    }
-
-    .loginbutton:hover {
-    background: linear-gradient(135deg, #4f46e5, #312e81);
-    box-shadow: 0 0 12px rgba(147, 197, 253, 0.6);
-    transform: translateY(-1px);
+    .login:hover {
+      background: #241b69;
+      box-shadow: 0 0 12px rgba(43, 33, 120, 0.6);
+      transform: translateY(-1px);
     }
 
     .signup {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 13px;
-    color: #dbeafe;
+      text-align: center;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #444;
     }
 
     .signup a {
-    color: #a5b4fc;
-    text-decoration: none;
-    font-weight: 600;
+      color: #2b2178;
+      text-decoration: none;
+      font-weight: 600;
     }
 
     .signup a:hover {
-    text-decoration: underline;
+      text-decoration: underline;
     }
 
+    /* Center Text */
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      max-width: 500px;
+    }
+
+    .center-text h1 {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .center-text p {
+      font-size: 16px;
+      font-weight: 400;
+      color: #ddd;
+    }
+
+    /* Logo on triangle corner (lower right) */
+    .logo-corner {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .logo-corner img {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .forgot-pass {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .forgot-pass a {
+      color: #2b2178;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .forgot-pass a:hover {
+      text-decoration: underline;
+      color: #4338ca;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="leftpanel">
-      <img src="logo.jpg" alt="CarJen Logo">
-      <h2>CarJen Transport Service Corp.</h2>
-      <p>Experience reliable, comfortable, and affordable transportation services. 
-         Book your ride with confidence and enjoy our premium vehicle fleet.</p>
-    </div>
+  <form class="formbox" onsubmit="redirectHome(event)">
+  <h3>Login</h3>
+  <p>Fill up your credentials</p>
 
-    <div class="divider"></div>
-
-    <div class="rightpanel">
-      <form class="formbox" onsubmit="openTerms(event)">
-        <h3>login</h3>
-        <p>Please enter your credentials </p>
-
-        <div class="inputform">
-          <input type="email" placeholder="Email Address" required>
-        </div>
-
-        <div class="inputform">
-          <input type="password" placeholder="Password" required>
-        </div>
-
-        <div class="forgot-pass">
-            <a href="forgot-password.html">Forgot Password?</a>
-        </div>
-
-        <button type="submit" class="loginbutton">Log In</button>
-
-        <div class="signup">
-          Don't have an account? <a href="signup.html">Create one here</a>
-        </div>
-      </form>
-    </div>
+  <div class="inputgroup">
+    <input type="email" placeholder="Email Address" required>
   </div>
 
+  <div class="inputgroup">
+    <input type="password" placeholder="Password" required>
+  </div>
 
-   <script>
-  function openTerms(e) {
-    e.preventDefault();
-    
-    const email = document.querySelector('input[type="email"]').value;
-    const password = document.querySelector('input[type="password"]').value;
-    
-    if (email === "" || password === "") {
-      alert("⚠️ Please fill out all fields.");
-      return;
+  <div class="forgot-pass">
+    <a href="forgot-password.html">Forgot Password?</a>
+  </div>
+  <button type="submit" class="login">Login</button>
+
+  <div class="signup">
+    Don’t have an account? <a href="signup.html">Create one here</a>
+  </div>
+</form>
+
+  <!-- Center Text -->
+  <div class="center-text">
+    <h1>Drive your future with CarJen Transport</h1>
+    <p>Reliable, safe, and trusted vehicle rental services</p>
+  </div>
+
+  <!-- Logo on bottom-right triangle -->
+  <div class="logo-corner">
+    <img src="logo.jpg" alt="CarJen Logo">
+  </div>
+
+  <script>
+    const modal = document.getElementById("termsModal");
+    const agreeBtn = document.getElementById("agreeBtn");
+    const agreeCheck = document.getElementById("agreeCheck");
+
+    function openTerms(e) {
+      e.preventDefault();
+      modal.style.display = "flex";
     }
-    window.location.href = "../LANDING/landing.html";
-  }
-</script>
 
+    function enableAgreeBtn() {
+      agreeBtn.disabled = !agreeCheck.checked;
+      agreeBtn.classList.toggle("active", agreeCheck.checked);
+    }
+
+    function agreeAndContinue() {
+      window.location.href = "login.html";
+    }
+
+    function redirectHome(e) {
+    e.preventDefault();
+    window.location.href = "../LANDING/landing.html"; 
+  }
+  </script>
 </body>
 </html>

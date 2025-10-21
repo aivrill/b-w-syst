@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | CarJen Transport</title>
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: 
+        linear-gradient(rgba(45, 35, 80, 0.55), rgba(15, 10, 25, 0.85)),
+        url('bg.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #fff;
+    }
+
+    .container {
+    width: 950px;
+    height: 620px;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(40, 40, 60, 0.45);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    }
+
+    .leftpanel {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: #fff;
+    text-align: center;
+    }
+
+    .leftpanel img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid #a78bfa;
+    box-shadow: 0 0 25px rgba(167, 139, 250, 0.4);
+    }
+
+    .leftpanel h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .leftpanel p {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 300px;
+    color: #e2e8f0;
+    }
+
+    .divider {
+    width: 1.5px;
+    background: rgba(255, 255, 255, 0.15);
+    height: 75%;
+    align-self: center;
+    }
+
+    .rightpanel {
+    flex: 1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    }
+
+    .formbox {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.336);
+    padding: 35px 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    }
+
+    .formbox:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 35px rgba(139, 92, 246, 0.35);
+    }
+
+    .formbox h3 {
+    font-size: 26px;
+    color: #c4b5fd;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+    }
+
+    .formbox p {
+    color: #d1d5db;
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-align: center;
+    }
+
+    .row {
+    display: flex;
+    gap: 18px;           
+    margin-bottom: 18px;   
+    }
+
+    .inputgroup {
+    margin-bottom: 18px;    
+    }
+
+    input {
+    width: 100%;
+    padding: 11px 15px;
+    border: 1.3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f8fafc;
+    }
+
+    input::placeholder {
+    color: #c7c7c7;
+    }
+
+    input:focus {
+    border-color: #a78bfa;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.4);
+    }
+
+
+    .create {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 18px;
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.35);
+    }
+
+    .create:hover {
+    background: linear-gradient(135deg, #4f46e5, #312e81);
+    box-shadow: 0 0 12px rgba(147, 197, 253, 0.6);
+    transform: translateY(-1px);
+    }
+
+    .signup {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #dbeafe;
+    }
+
+    .signup a {
+    color: #a5b4fc;
+    text-decoration: none;
+    font-weight: 600;
+    }
+
+    .signup a:hover {
+    text-decoration: underline;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      width: 80%;
+      max-width: 700px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+    }
+
+    .terms-body {
+      flex: 1;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+      color: #333;
+      background: #fafafa;
+    }
+
+    .terms-body::-webkit-scrollbar {
+      width: 8px;
+    }
+    .terms-body::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 10px;
+    }
+
+    h4 {
+      color: #1d175a;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .agree-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .agree-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      line-height: 1.4;
+    }
+
+    .agree-row label {
+      font-size: 14px;
+      color: #333;
+      vertical-align: middle;
+      transform: translateY(1px);
+    }
+
+    .agree-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #4f46e5;
+    }
+
+    .agree-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #4f46e5, #312e81);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+
+    .agree-btn.active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="leftpanel">
+      <img src="logo.jpg" alt="CarJen Logo">
+      <h2>CarJen Transport Service Corp.</h2>
+      <p>Experience reliable, comfortable, and affordable transportation services. 
+         Book your ride with confidence and enjoy our premium vehicle fleet.</p>
+    </div>
+
+    <div class="rightpanel">
+      <form class="formbox" onsubmit="openTerms(event)">
+        <h3>Create Account</h3>
+        <p>Fill in your details below</p>
+
+        <div class="row">
+          <input type="text" placeholder="First Name" required>
+          <input type="text" placeholder="Last Name" required>
+        </div>
+
+        <div class="inputgroup">
+          <input type="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="row">
+          <input type="number" placeholder="Phone Number" required>
+          <input type="date" placeholder="Birthdate" required>
+        </div>
+
+        <div class="inputgroup">
+          <input type="password" placeholder="Password" required>
+        </div>
+
+        <div class="inputgroup">
+          <input type="password" placeholder="Confirm Password" required>
+        </div>
+
+        <button type="submit" class="create">Create Account</button>
+
+        <div class="signup">
+          Already have an account? <a href="login.html">Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <h4>CarJen Transport Service Corporation – Terms & Conditions</h4>
+      <div class="terms-body">
+        <p><strong>Welcome to CarJen Transport Service Corporation.</strong> By creating an account or using this website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before proceeding.</p><br>
+        <p><strong>1. Acceptance of Terms</strong><br>By ticking the checkbox and creating an account, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+        <p><strong>2. Use of the System</strong><br>The System is provided to support vehicle rental operations of the Owner and Admin.</p>
+        <p><strong>3. Account Responsibility</strong><br>You are responsible for keeping your account and password confidential.</p>
+        <p><strong>4. Booking and Payment</strong><br>Bookings must be confirmed by the Admin. Fees will be communicated before confirmation.</p>
+        <p><strong>5. Cancellation Policy</strong><br>Users may cancel bookings according to company policy. Cancellation fees may apply.</p>
+        <p><strong>6. Vehicle Use</strong><br>Vehicles must be returned in the same condition, except for normal wear and tear.</p>
+        <p><strong>7. Prohibited Activities</strong><br>Do not use the platform for unlawful purposes or harmful content.</p>
+        <p><strong>8. Limitation of Liability</strong><br>CarJen Transport is not liable for indirect or consequential damages.</p>
+        <p><strong>9. Privacy Policy</strong><br>Personal data will be handled per the Data Privacy Act of 2012.</p>
+        <p><strong>10. Intellectual Property</strong><br>All contents and materials are owned by CarJen Transport Service Corp.</p>
+        <p><strong>11. Termination</strong><br>CarJen reserves the right to suspend or terminate accounts violating these terms.</p>
+        <p><strong>12. Contact Information</strong><br>For inquiries, contact <a href="mailto:support@carjentransport.com">carjenfb</a>.</p>
+      </div>
+
+      <div class="agree-section">
+        <div class="agree-row">
+          <input type="checkbox" id="agreeCheck" onchange="enableAgreeBtn()" />
+          <label for="agreeCheck">I have read and agree to all the Terms & Conditions</label>
+        </div>
+        <button id="agreeBtn" class="agree-btn" disabled onclick="agreeAndContinue()">Agree & Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("termsModal");
+    const agreeBtn = document.getElementById("agreeBtn");
+    const agreeCheck = document.getElementById("agreeCheck");
+
+    function openTerms(e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+    }
+
+    function enableAgreeBtn() {
+      agreeBtn.disabled = !agreeCheck.checked;
+      agreeBtn.classList.toggle("active", agreeCheck.checked);
+    }
+
+    function agreeAndContinue() {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CarJen Transport</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app" role="application" aria-label="CarJen Transport UI mockup">
+    <!--Toggle Button-->
+    <button class="toggle-btn" id="toggleBtn" aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="logo">
+            <img src="509602018_122224337096131506_9091305763445964822_n.jpg" 
+                 alt="CarJen Transport Logo" 
+                 class="logo-in-circle">
+          </div>
+          <div>
+            <h4 style="margin:0">CARJEN TRANSPORT</h4>
+          </div>
+        </div>
+
+        <!--Sidebar-->
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#"><i class="fa-solid fa-message"></i> Messages</a>
+          <a href="#"><i class="fa-solid fa-book"></i> My Bookings</a>
+          <a href="SIDEBAR\notification.html">
+            <i class="fa-solid fa-bell"></i>Notification</a>
+        </nav>
+      </div>
+
+      <div class="bottom-actions">
+        <div class="profile"><i class="fa-solid fa-user"></i> Profile</div>
+        <div class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <div class="back">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span style="font-size:15px">Manage your transportation needs</span>
+        </div>
+        <div class="page-title"></div>
+      </header>
+
+      <section class="content">
+        <div class="card-row">
+          <div class="arrow"><i class="fa-solid fa-chevron-left"></i></div>
+
+          <div class="cards">
+            <div class="vehicle-card">
+              <img src="vios.jpg" alt="Sedan">
+              <a href="INQUIRE/4-5.html" 
+              class="inquire-btn">Inquire Now <i class="fa-solid fa-arrow-right"></i></button></a>
+            </div>
+            <div class="vehicle-card">
+              <img src="innova.jpg" alt="SUV">
+              <a href="INQUIRE/4-5.html" class="inquire-btn">Inquire Now <i class="fa-solid fa-arrow-right"></i></button></a>
+            </div>
+            <div class="vehicle-card">
+              <img src="bus.jpg" alt="Bus">
+              <a href="INQUIRE/4-5.html" class="inquire-btn">Inquire Now <i class="fa-solid fa-arrow-right"></i></button></a>
+            </div>
+          </div>
+
+          <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!--Toggle Switch-->
+        <div class="toggle-row">
+          <span class="toggle-label">Feedback</span>
+          <label class="switch">
+            <input type="checkbox" id="toggleSwitch">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label">Trip Album</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!--External JS-->
+  <script src="script.js"></script>
+</body>
+</html>

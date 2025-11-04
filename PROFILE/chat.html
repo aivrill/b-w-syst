@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>rental history</title>
+  <title>Chat History</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <style>
@@ -161,7 +161,7 @@
       width: 85px;
       height: 85px;
       border-radius: 50%;
-      background: #fff;
+      background: #fff url(prof.png) center/60% no-repeat;
       margin-right: 20px;
     }
 
@@ -169,22 +169,6 @@
       font-size: 1.5em;
       font-weight: 600;
     }
-
-    .profile-badges {
-      margin-top: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 10px;
-      margin-right: 8px;
-      color: #fff;
-    }
-
-    .badge.premium { background: #675aff; }
-    .badge.verified { background: #df231f; }
 
     .profile-tabs {
       display: flex;
@@ -213,72 +197,80 @@
       background: #f1f1f9;
     }
 
-    .booking-history-table {
+    .chat-history-section {
       padding: 40px;
     }
 
-    .booking-history-table h2 {
+    .chat-history-section h2 {
       font-size: 1.6em;
       margin-bottom: 18px;
       color: #1a1a5c;
     }
 
-    .table-container {
-      overflow-x: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 720px;
-    }
-
-    thead {
-      background-color: #f6f6fa;
-    }
-
-    th, td {
-      padding: 14px 20px;
-      text-align: left;
-      font-size: 14px;
-      border-bottom: 1px solid #eee;
-    }
-
-    tbody tr:hover {
-      background: #f9f9ff;
-    }
-
-    .car-col {
+    /* Added search bar style */
+    .chat-search {
+      margin-bottom: 25px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      background: #f3f3ff;
+      border-radius: 12px;
+      padding: 8px 14px;
+      border: 1px solid #ddd;
     }
 
-    .car-col img {
-      width: 75px;
-      height: 50px;
-      border-radius: 8px;
+    .chat-search i {
+      color: #2b2178;
+      margin-right: 10px;
+    }
+
+    .chat-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .chat-item {
+      display: flex;
+      align-items: flex-start;
+      background-color: #f9f9ff;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .chat-item:hover {
+      background-color: #eceaff;
+    }
+
+    .chat-avatar img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      margin-right: 15px;
+      border: 2px solid #2b2178;
       object-fit: cover;
     }
 
-    .status {
-      padding: 4px 10px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 600;
+    .chat-details h3 {
+      margin: 0;
+      color: #2b2178;
+      font-size: 16px;
     }
 
-    .status.completed { background: #e8fbe8; color: #2e7d32; }
-    .status.cancelled { background: #ffe5e5; color: #c62828; }
+    .chat-details p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 14px;
+    }
 
-    .profile-avatar {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      background: #fff url(prof.png) center/60% no-repeat;
-      margin-right: 20px;
+    .chat-time {
+      font-size: 12px;
+      color: #777;
     }
   </style>
 </head>
@@ -324,50 +316,65 @@
     </section>
 
     <div class="profile-tabs">
-      <a href="../PROFILE/profile.html" class="tab-link"><i class="fa-solid fa-user"></i> Personal Info</a>
-      <a href="../PROFILE/bookings.html" class="tab-link active"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
-      <a href="../PROFILE/chat.html" class="tab-link"><i class="fa-solid fa-comments"></i> Chat History</a>
-      <a href="../PROFILE/notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="../PROFILE/settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="profile.html" class="tab-link"><i class="fa-solid fa-user"></i> Personal Info</a>
+      <a href="bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
+      <a href="chat.html" class="tab-link active"><i class="fa-solid fa-comments"></i> Chat History</a>
+      <a href="notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
 
-    <section class="booking-history-table">
-      <h2>Booking History</h2>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Vehicle</th>
-              <th>Status</th>
-              <th>Date</th>
-              <th>Price</th>
-              <th>Review</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="car-col"><img src="https://via.placeholder.com/80x50?text=Innova"><span>Toyota Innova 2020</span></td>
-              <td><span class="status completed">Completed</span></td>
-              <td>Sept 10–12, 2025</td>
-              <td>₱6,000</td>
-              <td>"Smooth ride! Highly recommended."</td>
-            </tr>
-            <tr>
-              <td class="car-col"><img src="https://via.placeholder.com/80x50?text=Xpander"><span>Mitsubishi Xpander 2022</span></td>
-              <td><span class="status cancelled">Cancelled</span></td>
-              <td>Aug 20–22, 2025</td>
-              <td>₱5,500</td>
-              <td><em>—</em></td>
-            </tr>
-            <tr>
-              <td class="car-col"><img src="https://via.placeholder.com/80x50?text=Starex"><span>Hyundai Starex 2019</span></td>
-              <td><span class="status completed">Completed</span></td>
-              <td>July 3–5, 2025</td>
-              <td>₱7,200</td>
-              <td><em>No review given</em></td>
-            </tr>
-          </tbody>
-        </table>
+    <section class="chat-history-section">
+      <h2>Chat History</h2>
+
+      <div class="chat-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search chats..." />
+      </div>
+
+      <div id="chatList">
+        <div class="chat-item">
+          <div class="chat-avatar">
+            <img src="user1.png" alt="Admin">
+          </div>
+          <div class="chat-details">
+            <h3>Admin Support</h3>
+            <p>Your inquiry about the Compact Sedan has been received. We’ll respond shortly.</p>
+            <span class="chat-time">Oct 18, 2025 - 2:15 PM</span>
+          </div>
+        </div>
+
+        <div class="chat-item">
+          <div class="chat-avatar">
+            <img src="user2.png" alt="Bryan">
+          </div>
+          <div class="chat-details">
+            <h3>Car Specialist – Bryan</h3>
+            <p>Hi! Just confirming your test drive schedule for October 20, 10:00 AM. Is that okay with you?</p>
+            <span class="chat-time">Oct 18, 2025 - 5:42 PM</span>
+          </div>
+        </div>
+
+        <div class="chat-item">
+          <div class="chat-avatar">
+            <img src="user3.png" alt="Service">
+          </div>
+          <div class="chat-details">
+            <h3>Customer Service</h3>
+            <p>Reminder: Please bring a valid ID when claiming your rental vehicle. Thank you!</p>
+            <span class="chat-time">Oct 19, 2025 - 8:05 AM</span>
+          </div>
+        </div>
+
+        <div class="chat-item">
+          <div class="chat-avatar">
+            <img src="user4.png" alt="Admin">
+          </div>
+          <div class="chat-details">
+            <h3>Admin Support</h3>
+            <p>Your rental for “Compact SUV” has been approved. Pickup location: Main Branch, Quezon City.</p>
+            <span class="chat-time">Oct 20, 2025 - 1:20 PM</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -388,11 +395,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const storedName = localStorage.getItem('userName');
   if (storedName) {
     document.querySelector('.profile-info h2').textContent = storedName;
-  } else {
-    console.log("No stored name found in localStorage.");
   }
-});
-</script>
 
+  const searchInput = document.getElementById('searchInput');
+  const chatList = document.getElementById('chatList').children;
+
+  searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+    Array.from(chatList).forEach(chat => {
+      const text = chat.textContent.toLowerCase();
+      chat.style.display = text.includes(filter) ? '' : 'none';
+    });
+  });
+});
+  </script>
 </body>
 </html>

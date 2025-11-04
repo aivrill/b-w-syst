@@ -161,7 +161,7 @@
       width: 85px;
       height: 85px;
       border-radius: 50%;
-      background: #fff;
+      background: #fff url(prof.png) center/60% no-repeat;
       margin-right: 20px;
     }
 
@@ -169,22 +169,6 @@
       font-size: 1.5em;
       font-weight: 600;
     }
-
-    .profile-badges {
-      margin-top: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 10px;
-      margin-right: 8px;
-      color: #fff;
-    }
-
-    .badge.premium { background: #675aff; }
-    .badge.verified { background: #df231f; }
 
     .profile-tabs {
       display: flex;
@@ -214,117 +198,163 @@
     }
 
     .settings-container {
-        padding: 40px;
-        background: #fafafa;
+      padding: 40px;
+      background: #fafafa;
     }
 
     .settings-container h2 {
-        color: #1a1a5c;
-        font-size: 1.5em;
-        font-weight: 700;
-        margin-bottom: 25px;
+      color: #1a1a5c;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 25px;
     }
 
     .settings-card {
-        background: #fff;
-        border-radius: 12px;
-        padding: 25px 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
     .settings-card h3 {
-        font-size: 1.1em;
-        color: #1a1a5c;
-        margin-bottom: 20px;
-        font-weight: 600;
+      font-size: 1.1em;
+      color: #1a1a5c;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
 
     .setting-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
     }
 
     .setting-row:last-child {
-        border-bottom: none;
+      border-bottom: none;
     }
 
     .setting-text strong {
-        font-weight: 600;
-        color: #222;
+      font-weight: 600;
+      color: #222;
     }
 
     .setting-text p {
-        color: #666;
-        font-size: 0.9em;
+      color: #666;
+      font-size: 0.9em;
     }
 
     .switch {
-        position: relative;
-        display: inline-block;
-        width: 44px;
-        height: 24px;
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
     }
 
     .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
+      opacity: 0;
+      width: 0;
+      height: 0;
     }
 
     .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0; left: 0;
-        right: 0; bottom: 0;
-        background-color: #ccc;
-        transition: 0.3s;
-        border-radius: 24px;
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
     }
 
     .slider:before {
-        position: absolute;
-        content: "";
-        height: 18px; width: 18px;
-        left: 3px; bottom: 3px;
-        background-color: white;
-        transition: 0.3s;
-        border-radius: 50%;
+      position: absolute;
+      content: "";
+      height: 18px; width: 18px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
     }
 
     input:checked + .slider {
-        background-color: #2b2178;
+      background-color: #2b2178;
     }
 
     input:checked + .slider:before {
-        transform: translateX(20px);
+      transform: translateX(20px);
     }
 
     .change-btn {
-        background: #2b2178;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.3s;
+      background: #2b2178;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
     }
 
     .change-btn:hover {
-        background: #3a2fb5;
+      background: #3a2fb5;
     }
-    .profile-avatar {
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      background: #fff url('https://cdn-icons-png.flaticon.com/512/1077/1077012.png') center/60% no-repeat;
-      margin-right: 20px;
+
+    .cancel-btn {
+      background: #999;
     }
-</style>
+
+    .cancel-btn:hover {
+      background: #777;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: fadeIn .3s ease-in-out;
+    }
+
+    .modal-content h4 {
+      color: #1a1a5c;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .modal-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 
 <body>
@@ -338,20 +368,22 @@
     </a>
 
     <div class="nav-links">
-      <a href="../LANDING/landing.html">Inquire</a>
-      <a href="../LANDING/landing.html">Feedbacks</a>
-      <a href="../LANDING/landing.html">Trip Album</a>
-      <a href="../LANDING/landing.html">About</a>
+      <a href="../LANDING/home.html">Inquire</a>
+      <a href="../LANDING/home.html">Feedbacks</a>
+      <a href="../LANDING/home.html">Trip Album</a>
+      <a href="../LANDING/home.html">About</a>
     </div>
 
     <div class="profile-menu">
       <div class="profile-btn"><i class="fa-solid fa-user"></i><span>Profile ▾</span></div>
       <div class="dropdown">
-        <a href="../LANDING/landing.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="../LANDING/home.html"><i class="fa-solid fa-house"></i> Home</a>
         <a href="../PROFILE/profile.html"><i class="fa-solid fa-user"></i> Profile</a>
-        <a href="../PROFILE/bookings.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-        <a href="../PROFILE/settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
-        <a href="../LANDING/noAcc.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+       <a href="../PROFILE/bookings.html"><i class="fa-solid fa-clock-rotate-left"></i> Rentals</a>
+        <a href="/PROFILE/chat.html"><i class="fa-solid fa-comments"></i> Chats</a>
+        <a href="/PROFILE/notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="/PROFILE/settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="../LANDING/landingpage.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
       </div>
     </div>
   </nav>
@@ -362,108 +394,184 @@
       <div class="profile-info">
         <h2>John Smith</h2>
         <p>john.smith@email.com</p>
-        <div class="profile-badges">
-          <span class="badge premium">Premium Member</span>
-          <span class="badge verified">Verified Driver</span>
-        </div>
       </div>
     </section>
 
     <div class="profile-tabs">
-      <a href="profile.html" class="tab-link"><i class="fa-solid fa-user"></i> Personal Info</a>
-      <a href="bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
-      <a href="notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="settings.html" class="tab-link active"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="../PROFILE/profile.html" class="tab-link"><i class="fa-solid fa-user"></i> Personal Info</a>
+      <a href="../PROFILE/bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
+      <a href="../PROFILE/chat.html" class="tab-link"><i class="fa-solid fa-comments"></i> Chat History</a>
+      <a href="../PROFILE/notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="../PROFILE/settings.html" class="tab-link active"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
 
     <section class="settings-container">
-  <h2>Account Settings</h2>
+      <h2>Account Settings</h2>
 
-  <div class="settings-card">
-    <h3>Preferences</h3>
+      <div class="settings-card">
+        <h3>Account Settings</h3>
 
-    <div class="setting-row">
-      <div class="setting-text">
-        <strong>Email Notifications</strong>
-        <p>Receive booking confirmations and updates</p>
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Change Password</strong>
+            <p>Update your password regularly for better security</p>
+          </div>
+          <button class="change-btn" id="changePasswordBtn">Change</button>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Forgot Password</strong>
+            <p>Reset your password if you forgot it</p>
+          </div>
+          <button class="change-btn" id="forgotPasswordBtn">Reset</button>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Deactivate Account</strong>
+            <p>Temporarily deactivate your profile</p>
+          </div>
+          <button class="change-btn" id="deactivateBtn">Deactivate</button>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Delete Account Permanently</strong>
+            <p>Completely remove your data from the system</p>
+          </div>
+          <button class="change-btn" style="background:#df231f;" id="deleteBtn">Delete</button>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Login History</strong>
+            <p>View your previous login times and locations</p>
+          </div>
+          <button class="change-btn">View</button>
+        </div>
       </div>
-      <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
 
-    <div class="setting-row">
-      <div class="setting-text">
-        <strong>SMS Notifications</strong>
-        <p>Get text messages for important updates</p>
+      <div class="settings-card">
+        <h3>Security</h3>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Two-Factor Authentication</strong>
+            <p>Add extra protection to your account</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="toggle-msg" id="twoFactor">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-text">
+            <strong>Device Management</strong>
+            <p>See devices currently logged in to your account</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="toggle-msg" id="deviceMgmt">
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider"></span>
-      </label>
-    </div>
-
-    <div class="setting-row">
-      <div class="setting-text">
-        <strong>Marketing Communications</strong>
-        <p>Receive special offers and promotions</p>
-      </div>
-      <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-    </div>
-  </div>
-
-  <div class="settings-card">
-    <h3>Security</h3>
-    <div class="setting-row">
-      <div class="setting-text">
-        <strong>Change Password</strong>
-        <p>Update your password regularly for better security</p>
-      </div>
-      <button class="change-btn">Change</button>
-    </div>
-
-    <div class="setting-row">
-      <div class="setting-text">
-        <strong>Two-Factor Authentication</strong>
-        <p>Add extra protection to your account</p>
-      </div>
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider"></span>
-      </label>
-    </div>
-  </div>
-</section>
-
-
-    
+    </section>
   </main>
 
+  <div id="changePasswordModal" class="modal">
+    <div class="modal-content">
+      <h4>Change Password</h4>
+      <p>Enter your current and new password below.</p>
+      <form id="changePasswordForm">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:15px;text-align:left;">
+          <label><strong>Current Password</strong></label>
+          <input type="password" id="currentPass" placeholder="Enter current password" style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+          <label><strong>New Password</strong></label>
+          <input type="password" id="newPass" placeholder="Enter new password" style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+          <label><strong>Confirm New Password</strong></label>
+          <input type="password" id="confirmPass" placeholder="Confirm new password" style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+        </div>
+        <div class="modal-btns">
+          <button type="button" class="change-btn cancel-btn" onclick="closeModal('changePasswordModal')">Cancel</button>
+          <button type="submit" class="change-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="forgotPasswordModal" class="modal">
+    <div class="modal-content">
+      <h4>Reset Password</h4>
+      <p>Enter your registered email to reset your password.</p>
+      <form id="forgotPasswordForm">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:15px;text-align:left;">
+          <label><strong>Email Address</strong></label>
+          <input type="email" id="resetEmail" placeholder="Enter your email" style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+        </div>
+        <div class="modal-btns">
+          <button type="button" class="change-btn cancel-btn" onclick="closeModal('forgotPasswordModal')">Cancel</button>
+          <button type="submit" class="change-btn">Send Reset Link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="deactivateModal" class="modal">
+    <div class="modal-content">
+      <h4>Deactivate Account</h4>
+      <p>Are you sure you want to temporarily deactivate your account?</p>
+      <div class="modal-btns">
+        <button class="change-btn cancel-btn" onclick="closeModal('deactivateModal')">Cancel</button>
+        <button class="change-btn" onclick="confirmDeactivate()">Yes, Deactivate</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <h4>Delete Account Permanently</h4>
+      <p>This action cannot be undone. All your data will be permanently removed.</p>
+      <div class="modal-btns">
+        <button class="change-btn cancel-btn" onclick="closeModal('deleteModal')">Cancel</button>
+        <button class="change-btn" style="background:#df231f;">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const profileBtn = document.querySelector('.profile-btn');
-  const dropdown = document.querySelector('.dropdown');
+    const profileBtn = document.querySelector('.profile-btn');
+    const dropdown = document.querySelector('.dropdown');
+    profileBtn.addEventListener('click', () => dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex');
 
-  profileBtn.addEventListener('click', () => {
-    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
-  });
+    document.getElementById('changePasswordBtn').onclick = () => openModal('changePasswordModal');
+    document.getElementById('forgotPasswordBtn').onclick = () => openModal('forgotPasswordModal');
+    document.getElementById('deactivateBtn').onclick = () => openModal('deactivateModal');
+    document.getElementById('deleteBtn').onclick = () => openModal('deleteModal');
 
-  window.addEventListener('click', e => {
-    if (!profileBtn.contains(e.target)) dropdown.style.display = 'none';
-  });
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
 
-  const storedName = localStorage.getItem('userName');
-  if (storedName) {
-    document.querySelector('.profile-info h2').textContent = storedName;
-  } else {
-    console.log("No stored name found in localStorage.");
-  }
-});
-</script>
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
 
+    document.querySelectorAll('.toggle-msg').forEach(toggle => {
+      toggle.addEventListener('change', function() {
+        if (this.checked) {
+          alert("By toggling this button, you are enabling additional security options for your account.");
+        } else {
+          alert("You have turned off this security option.");
+        }
+      });
+    });
+
+    function confirmDeactivate() {
+      alert("Your account has been deactivated temporarily.");
+      closeModal('deactivateModal');
+    }
+  </script>
 </body>
 </html>

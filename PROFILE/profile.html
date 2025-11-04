@@ -162,7 +162,7 @@
       width: 85px;
       height: 85px;
       border-radius: 50%;
-      background: #fff url('https://cdn-icons-png.flaticon.com/512/1077/1077012.png') center/60% no-repeat;
+      background: #fff url(prof.png) center/60% no-repeat;
       margin-right: 20px;
     }
 
@@ -175,22 +175,6 @@
       font-size: 0.95em;
       opacity: 0.9;
     }
-
-    .profile-badges {
-      margin-top: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 10px;
-      margin-right: 8px;
-      color: #fff;
-    }
-
-    .badge.premium { background: #675aff; }
-    .badge.verified { background: #df231f; }
 
     .profile-tabs {
       display: flex;
@@ -286,13 +270,35 @@
       background: #4639c8;
       transform: scale(1.03);
     }
+
+    #editBtn {
+      position: absolute;
+      bottom: 35px;
+      right: 300px;
+      padding: 12px 30px;
+      background: #df231f;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      height: 48px;
+      width: 180px;
+      box-shadow: 0 4px 14px rgba(223, 35, 31, 0.3);
+      transition: 0.25s;
+    }
+
+    #editBtn:hover {
+      background: #b41c19;
+      transform: scale(1.03);
+    }
   </style>
 </head>
 
 <body>
   <nav>
     <a href="#header" class="logo">
-      <img src="../SL/logo.jpg" alt="Logo">
+      <img src="Logo_main.jpg" alt="Logo">
       <div class="company-name">
         <p>CarJen Transport</p>
         <p>Services Corporation</p>
@@ -300,20 +306,22 @@
     </a>
 
     <div class="nav-links">
-      <a href="../LANDING/landing.html">Inquire</a>
-      <a href="../LANDING/landing.html">Feedbacks</a>
-      <a href="../LANDING/landing.html">Trip Album</a>
-      <a href="../LANDING/landing.html">About</a>
+      <a href="../LANDING/home.html">Inquire</a>
+      <a href="../LANDING/home.html">Feedbacks</a>
+      <a href="../LANDING/home.html">Trip Album</a>
+      <a href="../LANDING/home.html">About</a>
     </div>
 
     <div class="profile-menu">
       <div class="profile-btn"><i class="fa-solid fa-user"></i><span>Profile ▾</span></div>
       <div class="dropdown">
-        <a href="../LANDING/landing.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="../LANDING/home.html"><i class="fa-solid fa-house"></i> Home</a>
         <a href="../PROFILE/profile.html"><i class="fa-solid fa-user"></i> Profile</a>
-        <a href="../PROFILE/bookings.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
-        <a href="../PROFILE/settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
-        <a href="../LANDING/noAcc.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+       <a href="../PROFILE/bookings.html"><i class="fa-solid fa-clock-rotate-left"></i> Rentals</a>
+        <a href="/PROFILE/chat.html"><i class="fa-solid fa-comments"></i> Chats</a>
+        <a href="/PROFILE/notif.html"><i class="fa-solid fa-bell"></i> Notifications</a>
+        <a href="/PROFILE/settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="../LANDING/landingpage.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
       </div>
     </div>
   </nav>
@@ -324,18 +332,15 @@
       <div class="profile-info">
         <h2>John Smith</h2>
         <p>john.smith@email.com</p>
-        <div class="profile-badges">
-          <span class="badge premium">Premium Member</span>
-          <span class="badge verified">Verified Driver</span>
-        </div>
       </div>
     </section>
 
     <div class="profile-tabs">
-      <a href="profile.html" class="tab-link active"><i class="fa-solid fa-user"></i> Personal Info</a>
-      <a href="bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
-      <a href="notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
-      <a href="settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="../PROFILE/profile.html" class="tab-link active"><i class="fa-solid fa-user"></i> Personal Info</a>
+      <a href="../PROFILE/bookings.html" class="tab-link"><i class="fa-solid fa-clock-rotate-left"></i> Rental History</a>
+      <a href="../PROFILE/chat.html" class="tab-link"><i class="fa-solid fa-comments"></i> Chat History</a>
+      <a href="../PROFILE/notif.html" class="tab-link"><i class="fa-solid fa-bell"></i> Notifications</a>
+      <a href="../PROFILE/settings.html" class="tab-link"><i class="fa-solid fa-gear"></i> Settings</a>
     </div>
 
     <section class="profile-content">
@@ -363,6 +368,8 @@
         </div>
       </div>
 
+      <button id="editBtn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+
       <button id="saveBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
     </section>
   </main>
@@ -378,9 +385,12 @@
     });
 
     const saveBtn = document.getElementById('saveBtn');
+    const editBtn = document.getElementById('editBtn');
     const firstNameInput = document.getElementById('firstName');
     const lastNameInput = document.getElementById('lastName');
     const nameDisplay = document.querySelector('.profile-info h2');
+
+    editBtn.style.display = 'none';
 
     saveBtn.addEventListener('click', () => {
       const firstName = firstNameInput.value.trim();
@@ -391,9 +401,22 @@
         nameDisplay.textContent = fullName;
         localStorage.setItem('userName', fullName);
         alert('Profile updated successfully!');
+
+        editBtn.style.display = 'inline-block';
       } else {
         alert('Please enter at least a first or last name.');
       }
+    });
+
+    editBtn.addEventListener('click', () => {
+      firstNameInput.removeAttribute('disabled');
+      lastNameInput.removeAttribute('disabled');
+      document.getElementById('email').removeAttribute('disabled');
+      document.getElementById('phone').removeAttribute('disabled');
+      document.getElementById('oldPassword').removeAttribute('disabled');
+      document.getElementById('newPassword').removeAttribute('disabled');
+
+      alert('You can now edit your profile again.');
     });
 
     window.addEventListener('load', () => {

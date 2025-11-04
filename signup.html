@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Verification Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #4caf50;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    #verify-section {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Email Verification</h2>
+
+    <div id="send-section">
+      <input type="email" id="email" placeholder="Enter your email" required />
+      <button onclick="sendCode()">Send Verification Code</button>
+    </div>
+
+    <div id="verify-section">
+      <input type="text" id="code" placeholder="Enter 6-digit code" maxlength="6" required />
+      <button onclick="verifyCode()">Verify Code</button>
+    </div>
+  </div>
+
+  <script>
+    // Initialize EmailJS
+    (function () {
+      emailjs.init("YOUR_PUBLIC_KEY"); // replace with your actual Public Key
+    })();
+
+    function sendCode() {
+      const email = document.getElementById("email").value.trim();
+      if (!email) {
+        alert("Please enter your email!");
+        return;
+      }
+
+      const code = Math.floor(100000 + Math.random() * 900000); // 6-digit code
+      localStorage.setItem("otp", code);
+
+      // Send email via EmailJS
+      emailjs
+        .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          to_email: email,
+          code: code,
+        })
+        .then(
+          function () {
+            alert("Verification code sent to " + email);
+            document.getElementById("send-section").style.display = "none";
+            document.getElementById("verify-section").style.display = "block";
+          },
+          function (error) {
+            alert("Error sending email: " + JSON.stringify(error));
+          }
+        );
+    }
+
+    function verifyCode() {
+      const userCode = document.getElementById("code").value.trim();
+      const realCode = localStorage.getItem("otp");
+
+      if (userCode === realCode) {
+        alert("✅ Email verified successfully!");
+        // You can now redirect or create the user account here
+      } else {
+        alert("❌ Invalid verification code!");
+      }
+    }
+  </script>
+</body>
+</html>
